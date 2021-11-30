@@ -6,11 +6,12 @@
 	background-color: orange;
   margin: 0;
   color: white;
-
+	overflow-x: hidden; /* Disable horizontal scroll */
 }
 
 .navbar {
-  background-color: green;
+  /*background-color: green;*/
+  background-color: #1a1a1a;
   overflow: hidden;
   width: 100%;
   padding: 0 20px;
@@ -26,7 +27,7 @@
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 20px 16px;
   text-decoration: none;
   font-size: 17px;
 }
@@ -50,11 +51,15 @@
   border-radius: 20px;
   font-size: 17px;
   float: left;
-  margin-top: 6px;
+  margin-top: 10px;
   background-color: black;
+  color: white;
 }
 
-
+.profile{
+  float: right;
+  margin-right: 25px;
+}
 
 .content {
 	width: 100%;
@@ -71,7 +76,8 @@
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
 	overflow-x: hidden; /* Disable horizontal scroll */
 	padding-top: 20px;
-	background-color: blue;
+	/*background-color: blue;*/
+  background-color: #1a1a1a;
   
 }
 
@@ -80,7 +86,7 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 25px;
-  color: #c3b8b8;
+  color: #c2c2c2;
   display: block;
 }
 
