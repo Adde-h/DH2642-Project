@@ -4,9 +4,10 @@ export default function NavbarView(props) {
 	return (
 		<div class="navbarcontent">
 			<input type="text" placeholder="Search.." />
-      <div class="profile">
-			  <a href="#">{isLoggedIn ? "Username" : "Login / Sign Up"}</a>
-      </div>
+			<div class="profile">
+				<button onClick="requestAuthorization()">Auth</button>
+				<a href="#">{isLoggedIn ? "Username" : "Login / Sign Up"}</a>
+			</div>
 		</div>
 	);
 }
