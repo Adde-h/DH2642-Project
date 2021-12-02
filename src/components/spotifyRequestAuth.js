@@ -3,8 +3,8 @@ export default function requestAuthorization(){
     const AUTHORIZE = "https://accounts.spotify.com/authorize";
     const redirect_uri = "http://localhost:3000/callback/";
     
-    const client_id = "aa367afc771140fbb0dd7e103b86e39e";
-    const client_secret = "0fd5b748dbbb47aea7e759d620258254";
+    const client_id = "d1e2c8099a8d4bb1a5f47c84bdfb9d44";
+    const client_secret = "b14fd2bc4db04bb2be9ea5fc2658cb93";
     //localStorage.setItem("client_id", client_id);
     //localStorage.setItem("client_secret", client_secret); // In a real app you should not expose your client_secret to the user
 
