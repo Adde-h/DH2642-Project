@@ -1,3 +1,5 @@
+import requestAuthorization from "../components/spotifyRequestAuth";
+
 export default function NavbarView(props) {
   let isLoggedIn = false;
 
@@ -5,7 +7,7 @@ export default function NavbarView(props) {
 		<div class="navbarcontent">
 			<input type="text" placeholder="Search.." />
 			<div class="profile">
-				<button onClick="requestAuthorization()">Auth</button>
+				<button onClick={requestAuthorization()}>Auth</button>
 				<a href="#">{isLoggedIn ? "Username" : "Login / Sign Up"}</a>
 			</div>
 		</div>
