@@ -1,7 +1,7 @@
 export default function SidebarView(props) {
 	return (
-		<div class="sidebar">
-			<div class="sidecontent">
+		<div className="sidebar">
+			<div className="sidecontent">
 				<h2>Artists</h2>
 				<div>
 					{props.artists.map((artists) => {

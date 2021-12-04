@@ -1,13 +1,11 @@
-import requestAuthorization from "../components/spotifyRequestAuth";
-import onPageLoad from "../../src/components/spotifyRequestAuth.js"
 import Login from "../components/Login";
 
 export default function NavbarView(props) {
 
 	return (
-		<div class="navbarcontent">
+		<div className="navbarcontent">
 			<input type="text" placeholder="Search.." />
-			<div class="profile">
+			<div className="profile">
 				<Login/>
 			</div>
 		</div>
