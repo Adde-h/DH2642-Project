@@ -1,4 +1,6 @@
 import requestAuthorization from "../components/spotifyRequestAuth";
+import onPageLoad from "../../src/components/spotifyRequestAuth.js"
+import Login from "../components/Login";
 
 export default function NavbarView(props) {
 
@@ -6,8 +8,11 @@ export default function NavbarView(props) {
 		<div class="navbarcontent">
 			<input type="text" placeholder="Search.." />
 			<div class="profile">
-				<a onClick={() => requestAuthorization()}>{props.isLoggedIn ? "Username" : "Login / Sign Up"}</a>
+				<Login/>
 			</div>
 		</div>
 	);
 }
+
+//<a onClick={() => console.log("TRIGG")}>{props.isLoggedIn ? "Username" : "Login / Sign Up"}</a>
+

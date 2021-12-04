@@ -1,40 +1,24 @@
 //import logo from "./logo.svg";
 import "../src/styles/App.css";
 import "../src/styles/home.css";
-import SidebarView from "../src/views/SidebarView.js";
-import NavbarView from "./views/NavbarView";
-import Show from "../src/components/HashPresenter.js";
-import MainView from "../src/views/MainView";
+import NavbarPresenter from "../src/presenters/NavbarPresenter.js";
+import SidebarPresenter from "../src/presenters/SidebarPresenter.js";
+import MainPresenter from "../src/presenters/MainPresenter.js";
+import Show from "./presenters/HashPresenter.js";
+//import onPageLoad from "../src/components/spotifyRequestAuth.js"
 
-function App() {
-	const artists = [
-		"Drake",
-		"Dree Low",
-		"Rihanna",
-		"Justin Bieber",
-		"Katy Perry",
-		"Lady Gaga",
-	];
 
-	const playlists = [
-		"My Music Mix",
-		"Summer Playlist",
-		"Winter Mix 2021",
-		"Sad Songs",
-	];
 
-	const albums = ["Donda", "Sour", "After Hours", "Flawless"];
-	let isLoggedIn = false;
-	defaultRoute();
+function App(props) {
 	return (
 		<div className="container">
 			<div class="navbar">
-				<NavbarView isLoggedIn={isLoggedIn} />
+			<NavbarPresenter model = {props.model}/>
 			</div>
 
 			<div class="content">
-				<MainView isLoggedIn={isLoggedIn} />
-				<SidebarView artists={artists} playlists={playlists} albums={albums} />
+				<MainPresenter model = {props.model}/>
+				<SidebarPresenter model = {props.model}/>
 			</div>
 		</div>
 	);
@@ -46,5 +30,7 @@ function defaultRoute() {
 	)
 		window.location.hash = "#start";
 }
+
+
 
 export default App;

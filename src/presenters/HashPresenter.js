@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { onPageLoad } from "../components/spotifyRequestAuth";
 
 function Show(props) {
 	const [hashState, setHash] = React.useState(window.location.hash);
@@ -8,7 +9,7 @@ function Show(props) {
 			setHash(window.location.hash);
 		};
 		window.addEventListener("hashchange", listener); // 1 subscribe
-		
+		//window.addEventListener("hashchange", onPageLoad());
 		return function () {
 			window.removeEventListener("hashchange", listener);
 		}; // 2
