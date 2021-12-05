@@ -1,8 +1,4 @@
-
-import { spotifyApi } from "./components/APIConfig";
-//import { response, require } from "express";
-//const express = require("express");
-//const app = express();
+import getToken from '../src/components/SpotifySource.js';
 const SpotifyWebApi = require("spotify-web-api-node");
 require('dotenv').config();
 
@@ -26,7 +22,6 @@ export default class SpotifyModel {
 	setCode(code) {
 		this.code = code;
 	}
-
 
 	checkRedirect() {
 		console.log("checkRedirect");
@@ -83,55 +78,3 @@ export default class SpotifyModel {
 	}
 }
 
-
-
-function getToken(code) {
-	console.log("ID", process.env.API_CLIENTID);
-	console.log("secret", process.env.API_CLIENTSECRET);
-	fetch("https://accounts.spotify.com/api/token",  {
-		method: 'POST',
-		headers: {
-			'Authorization': 'Basic ' + (new Buffer( process.env.API_CLIENTID + ':' + process.env.API_CLIENTSECRET).toString('base64'))
-		},
-		form: {
-			code: code,
-			redirect_uri: spotifyApi.redirectUri,
-			grant_type: 'authorization_code'
-		},
-		json: true
-	})
-	.then(response => console.log(response));
-}
-
-/*
-function getToken(code) {
-fetch("https://accounts.spotify.com/api/token",  {
-		method: 'POST',
-		data: {
-      "grant_type":    "authorization_code",
-      "code":          code,
-      "redirect_uri":  spotifyApi.redirectUri,
-      "client_secret": spotifyApi.client_secret,
-      "client_id":     spotifyApi.client_id,
-    },
-    success: function(result) {
-      console.log("result",result);
-    }
-	})
-}
-
-
-
-			var authOptions = {
-      url: 'https://accounts.spotify.com/api/token',
-      form: {
-        code: code,
-        redirect_uri: redirect_uri,
-        grant_type: 'authorization_code'
-      },
-      headers: {
-        'Authorization': 'Basic ' + (new Buffer(client_id + ':' + client_secret).toString('base64'))
-      },
-      json: true
-    };
-*/

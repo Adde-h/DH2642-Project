@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "../src/styles/index.css";
 import App from "./App";
 import SpotifyModel from "./SpotifyModel";
+require('dotenv').config();
 
 const myModel = new SpotifyModel();
 ReactDOM.render(

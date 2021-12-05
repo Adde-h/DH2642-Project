@@ -1,7 +1,7 @@
 import React from "react";
-
+import { API_CLIENTID, API_REDIRECTURI } from "./SpotifyAPI";
 const AUTH_URL =
-	"https://accounts.spotify.com/authorize?client_id=d1e2c8099a8d4bb1a5f47c84bdfb9d44&response_type=code&redirect_uri=http://localhost:3000/callback/&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+	"https://accounts.spotify.com/authorize?client_id="+ API_CLIENTID +"&response_type=code&redirect_uri=" + API_REDIRECTURI + "&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
 
 export default function Login() {
 	return (

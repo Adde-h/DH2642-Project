@@ -11,6 +11,3 @@ export default function NavbarView(props) {
 		</div>
 	);
 }
-
-//<a onClick={() => console.log("TRIGG")}>{props.isLoggedIn ? "Username" : "Login / Sign Up"}</a>
-
