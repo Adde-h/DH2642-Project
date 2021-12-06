@@ -89,17 +89,60 @@ export function getUsername(props) {
 }
 
 export function search(props) {
-	fetch(
-		"https://api.spotify.com/v1/search/?q=" +
-			encodeURI(props) +
-			"&type=track%2Cartist%2Calbum",
-		{
-			method: "GET",
-			headers: {
-				Authorization: `Bearer ${access_token}`,
-			},
-		}
-	)
-		.then((response) => response.json())
-		.then((res) => console.log(res.name));
+	var op = props.option;
+
+	if (op === "artists") {
+		fetch(
+			"https://api.spotify.com/v1/search?query=" +
+				encodeURI(props.id) +
+				"&type=artist" +
+				"&market=SE&limit=1&offset=0",
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${access_token}`,
+				},
+			}
+		).then((response) => {
+			response.json().then((res) => {
+				console.log("Artist: ", res.artists.items[0].name);
+			});
+		});
+	}
+	else if (op === "tracks") {
+		fetch(
+			"https://api.spotify.com/v1/search?query=" +
+				encodeURI(props.id) +
+				"&type=track" +
+				"&market=SE&limit=1&offset=0",
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${access_token}`,
+				},
+			}
+		).then((response) => {
+			response.json().then((res) => {
+				console.log("Track: ", res.tracks.items[0].name);
+			});
+		});
+	}
+	else if (op === "albums") {
+		fetch(
+			"https://api.spotify.com/v1/search?query=" +
+				encodeURI(props.id) +
+				"&type=album" +
+				"&market=SE&limit=1&offset=0",
+			{
+				method: "GET",
+				headers: {
+					Authorization: `Bearer ${access_token}`,
+				},
+			}
+		).then((response) => {
+			response.json().then((res) => {
+				console.log("Album: ", res.albums.items[0].name);
+			});
+		});
+	}
 }

@@ -5,7 +5,6 @@ import NavbarPresenter from "../src/presenters/NavbarPresenter.js";
 import SidebarPresenter from "../src/presenters/SidebarPresenter.js";
 import MainPresenter from "../src/presenters/MainPresenter.js";
 //import Show from "./presenters/HashPresenter.js";
-require('dotenv').config();
 
 
 function App(props) {
