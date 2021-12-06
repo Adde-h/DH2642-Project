@@ -1,5 +1,5 @@
 import getToken from '../src/components/SpotifySource.js';
-const SpotifyWebApi = require("spotify-web-api-node");
+//const SpotifyWebApi = require("spotify-web-api-node");
 
 export default class SpotifyModel {
 	constructor(
