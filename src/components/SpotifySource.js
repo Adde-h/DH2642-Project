@@ -106,6 +106,8 @@ export function search(props) {
 		).then((response) => {
 			response.json().then((res) => {
 				console.log("Artist: ", res.artists.items[0].name);
+				console.log("Genre: ", res.artists.items[0].genres[0]);
+				console.log("Response from api: ", res.artists.items[0]);
 			});
 		});
 	}
@@ -124,6 +126,7 @@ export function search(props) {
 		).then((response) => {
 			response.json().then((res) => {
 				console.log("Track: ", res.tracks.items[0].name);
+				console.log("Response from API: ", res.tracks.items[0]);
 			});
 		});
 	}
@@ -142,6 +145,7 @@ export function search(props) {
 		).then((response) => {
 			response.json().then((res) => {
 				console.log("Album: ", res.albums.items[0].name);
+				console.log("Response from API: ", res.albums.items[0]);
 			});
 		});
 	}
