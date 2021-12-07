@@ -1,4 +1,4 @@
-//export const API_REDIRECTURI = "http://localhost:3000/callback/";
-export const API_REDIRECTURI = "https://webbify.herokuapp.com/callback/";
-export const API_CLIENTSECRET = "7ea1de0c29144f3b9f0f35e7216e97ed";
-export const API_CLIENTID = "d1e2c8099a8d4bb1a5f47c84bdfb9d44";
+export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI_HEROKU;
+//export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI;
+export const API_CLIENTSECRET = process.env.REACT_APP_API_CLIENTSECRET;
+export const API_CLIENTID = process.env.REACT_APP_API_CLIENTID;
