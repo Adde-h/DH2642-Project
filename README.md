@@ -1,7 +1,7 @@
 
 # Webbify
 
-A web application created in to search artists, songs and albums to get useful information!
+A web application created to search artists, songs and albums to get useful information!
 
 # About Webbify
 
@@ -65,7 +65,7 @@ SpotifyModel.js: Our model for this application containing functions to set and 
 
 ## Tools
 
-**Client:** React, Git, NPM
+**Client:** React, Git, NPM, dotenv
 
 **Server:** Node
 
