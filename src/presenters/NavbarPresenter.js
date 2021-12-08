@@ -2,6 +2,6 @@ import NavbarView from "../views/NavbarView.js";
 
 export default function NavbarPresenter(props) {
 	return (
-		<NavbarView isLoggedIn={props.isLoggedIn} options={["tracks", "artists", "albums"]}/>
+		<NavbarView isLoggedIn={props.model.isLoggedIn} model={props}/>
 	)
 }

@@ -1,7 +1,13 @@
+import React from "react";
 import MainView from "../views/MainView.js";
 
-const id = "3tNPDodRNuLdezJnTsYOqy";
-
 export default function MainPresenter(props) {
-	return <MainView isLoggedIn={props.isLoggedIn} artist = {id} options={["Tracks", "Artists", "Albums"]}/>;
+
+	/**
+	 * Main Presenter to switch between SearchResults, Artists, Playlists, Albums and Start
+	 */
+	
+	return (
+		<MainView isLoggedIn={props.model.isLoggedIn} query={props.model.query} model = {props}/>
+	);
 }

@@ -5,9 +5,9 @@ const ClientSecret = API_CLIENTSECRET;
 const ClientID = API_CLIENTID;
 const RedirectURI = API_REDIRECTURI;
 
-export default function getToken(code) {
+export function getToken(code) {
 	//console.log("ENV: ", RedirectURI);
-  //console.log("ID", ClientID);
+	//console.log("ID", ClientID);
 	//console.log("secret", ClientSecret);
 	fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
@@ -88,11 +88,18 @@ export function getUsername(props) {
 		.then((res) => console.log(res.display_name));
 }
 
-export function search(props) {
+export function searchAPI(props) {
+	console.log("searchAPI", props);
 	var op = props.option;
+	console.log("OPTION:", op);
 
+	if(!op) 
+	{
+		console.log("NO OPTION");
+	}
+	
 	if (op === "artists") {
-		fetch(
+		return fetch(
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=artist" +
@@ -103,16 +110,9 @@ export function search(props) {
 					Authorization: `Bearer ${access_token}`,
 				},
 			}
-		).then((response) => {
-			response.json().then((res) => {
-				console.log("Artist: ", res.artists.items[0].name);
-				console.log("Genre: ", res.artists.items[0].genres[0]);
-				console.log("Response from api: ", res.artists.items[0]);
-			});
-		});
-	}
-	else if (op === "tracks") {
-		fetch(
+		);
+	} else if (op === "tracks") {
+		return fetch(
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=track" +
@@ -123,15 +123,9 @@ export function search(props) {
 					Authorization: `Bearer ${access_token}`,
 				},
 			}
-		).then((response) => {
-			response.json().then((res) => {
-				console.log("Track: ", res.tracks.items[0].name);
-				console.log("Response from API: ", res.tracks.items[0]);
-			});
-		});
-	}
-	else if (op === "albums") {
-		fetch(
+		);
+	} else if (op === "albums") {
+		return fetch(
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=album" +
@@ -142,11 +136,6 @@ export function search(props) {
 					Authorization: `Bearer ${access_token}`,
 				},
 			}
-		).then((response) => {
-			response.json().then((res) => {
-				console.log("Album: ", res.albums.items[0].name);
-				console.log("Response from API: ", res.albums.items[0]);
-			});
-		});
+		);
 	}
 }
