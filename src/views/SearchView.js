@@ -1,80 +1,51 @@
-/*
-  UNUSED AT THE MOMENT
-  TO BE USED IN FUTURE DEVELOPMENT
-*/
+import React from "react";
 
-
-import { getArtist, search } from "../components/SpotifySource";
-
-function giveOptions(opt) {
-	return <option> {opt} </option>;
-}
-
-function eventPrinter(evt) {
-	console.log(evt);
-}
-/*
 export default function SearchFormView(props) {
+	const [searchQuery, setSearchQuery] = React.useState("");
+	const [searchType, setSearchType] = React.useState("artists");
 	return (
-		<div>
+		<span className="search">
 			<input
 				type="text"
-				placeholder="Insert Artist ID"
+				placeholder="Search..."
 				className="searchArtist"
-				id="myInput"
+				onInput={(text) =>setSearchQuery(text.target.value)}
+				onKeyDown={(key) => {
+					if (key.keyCode === 13) {
+					console.log("QUERY", searchType);
+						props.model.model.model.setCurrentSearch({query: searchQuery, option:searchType});
+						console.log("Searching for", searchQuery);
+					}
+				}}
 			/>
-			<button
-				onClick={() =>
-					search({
-						id: document.getElementById("myInput").value,
-						option: "artists",
-					})
-				}></button>
-			<select onChange={(event) => props.onDishType(event.target.value)}>
+			<select
+				className="searchSelect"
+				onChange={(event) => {setSearchType(event.target.value);console.log("SELECT",event.target.value)}}>
+				<option>Choose:</option>
 				{props.options.map((giveOptions) => (
-					<option value={giveOptions.value} id="op">
+					<option value={giveOptions.value} key={giveOptions}>
 						{giveOptions}
 					</option>
 				))}
 			</select>
-		</div>
 
-		
-    <div>
-      <input onInput={(e) => props.onText(e.target.value)} />
-      <select onChange={(event) => props.onDishType(event.target.value)}>
-        <option>Choose:</option>
-        {props.options.map(giveOptions)}
-      </select>
-      <button onClick={(event) => props.onSearch()}>search!</button>
-      <button onClick={() => window.location.hash="#summary"} style="margin-left:10px"> Summary </button>
-    </div>
-    
-	)
+			<button
+				className="searchBtn"
+				onClick={() => {
+					console.log("QUERY", searchType);
+					props.model.model.model.setCurrentSearch({query: searchQuery, option:searchType});
+				}}>
+				Search!
+			</button>
+		</span>
+	);
 }
-*/
-/*
-function SearchResultsView(props) {
+
+export function SearchResultsView(props) {
 	return (
 		<div>
-			{props.searchResults.map((result) => {
-				return (
-					<span
-						class="searchResult"
-						key={result.id}
-						onClick={() => {
-							props.dishChosen(result.id);
-							window.location.hash = "#details";
-						}}>
-						<img
-							src={"https://spoonacular.com/recipeImages/" + result.image}
-							height="100"
-						/>
-						<div>{result.title}</div>
-					</span>
-				);
-			})}
+			{props.searchResults}
+			<h1>Search Results</h1>
 		</div>
 	);
 }
-*/

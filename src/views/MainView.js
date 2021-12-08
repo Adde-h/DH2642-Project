@@ -1,4 +1,10 @@
+import React from "react";
+import SearchResultView from "./SearchView.js";
+import promiseNoData from "../components/promiseNoData.js";
+
+
 export default function MainView(props) {
+	console.log('MainView', props);
 	return (
 		<div className="main">
 		
@@ -6,7 +12,7 @@ export default function MainView(props) {
 			<span>Please sign up or log in to get started</span>
 
 
+
 		</div>
 	);
 }
-

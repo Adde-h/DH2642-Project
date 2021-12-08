@@ -1,5 +1,4 @@
-import getToken from '../src/components/SpotifySource.js';
-//const SpotifyWebApi = require("spotify-web-api-node");
+import { getToken, searchAPI } from "../src/components/SpotifySource.js";
 
 export default class SpotifyModel {
 	constructor(
@@ -8,7 +7,9 @@ export default class SpotifyModel {
 		artists = [],
 		playlists = [],
 		albums = [],
-		observers = []
+		observers = [],
+		currentSearch = null,
+		searchType = null,
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -16,6 +17,8 @@ export default class SpotifyModel {
 		this.setArtists(artists);
 		this.setPlaylists(playlists);
 		this.setAlbums(albums);
+		this.currentSearch = currentSearch;
+		this.searchType = searchType;
 	}
 
 	setCode(code) {
@@ -56,6 +59,34 @@ export default class SpotifyModel {
 		this.notifyObservers();
 	}
 
+	setCurrentSearch(search) {
+		if (this.currentSearch === search.query && this.searchType === search.option) {
+			console.log("Trigg");
+			return;
+		}
+		this.searchType = search.option;
+		this.currentSearch = search.query;
+		this.currentSearchDetails = null;
+		this.currentSearchError = null;
+		this.notifyObservers();
+		console.log("setCurrentSearch", search);
+		if (this.currentSearch) {
+			searchAPI({ id: this.currentSearch, option: search.option })
+				.then((response) => {
+					response.json().then((data) => {
+						this.currentSearchDetails = data;
+						this.notifyObservers();
+						console.log("SEARCHDATA", data);
+					});
+				})
+				.catch((err) => {
+					this.currentSearchError = err;
+					this.notifyObservers();
+					console.log("SEARCHERROR", err);
+				});
+		}
+	}
+
 	addObserver(callback) {
 		this.observers = [...this.observers, callback];
 	}
@@ -76,4 +107,3 @@ export default class SpotifyModel {
 		});
 	}
 }
-
