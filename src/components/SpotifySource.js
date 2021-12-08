@@ -1,6 +1,6 @@
 import { API_CLIENTID, API_CLIENTSECRET, API_REDIRECTURI } from "./SpotifyAPI";
 
-var access_token = null;
+var access_token = "BQC0jOviexsPe0NjiNTbq9eKJJjCA2eSN58ENMAzSH6mxO9yUelG0qENCNSRLPa06eoJk7KeDKtIa_d32vPQo8S2WG96AcxCfb2zlMjbmBJxayR4BZUU2bikz78VqwIjFX6kJP3V";
 const ClientSecret = API_CLIENTSECRET;
 const ClientID = API_CLIENTID;
 const RedirectURI = API_REDIRECTURI;
@@ -56,14 +56,17 @@ export function getRefreshToken(access_token) {
 }
 
 export function getArtist(props) {
-	fetch("https://api.spotify.com/v1/artists/" + props, {
+	let artistName = '';
+	
+	return fetch("https://api.spotify.com/v1/artists/" + props, {
 		method: "GET",
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
 	})
 		.then((response) => response.json())
-		.then((res) => console.log(res.name));
+		.then(res =>{ console.log(res.name); return res.name;});
+
 }
 
 export function getSong(props) {

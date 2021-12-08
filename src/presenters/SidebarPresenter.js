@@ -3,7 +3,7 @@ import SidebarView from "../views/SidebarView.js";
 export default function SidebarPresenter(props) {
 	return (
 		<SidebarView
-			artists={["Daft Punk", "The Beatles", "The Rolling Stones", "The Who"]}
+			artists={["4tZwfgrHOc3mvqYlEYSvVi", "3WrFJ7ztbogyGnTHbHJFl2", "22bE4uQ6baNwSHPVcDxLCe", "67ea9eGLXYMsO2eYQRui3w"]}
 			playlists={["My Playlist", "My Playlist 2"]}
 			albums={["My Album", "My Album 2"]}
 		/>

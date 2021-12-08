@@ -1,14 +1,15 @@
+import { getArtist } from "../components/SpotifySource";
+
 export default function SidebarView(props) {
+	console.log("Hello" + getArtist(props.artists[0]));
 	return (
 		<div className="sidebar">
 			<div className="sidecontent">
 				<h2>Artists</h2>
 				<div>
-					{props.artists.map((artists) => {
+					{props.artists.map((artists) => {						
 						return (
-							<a href="#" key={artists}>
-								{artists}
-							</a>
+							<h3 key={artists}>{getArtist(artists)}</h3>
 						);
 					})}
 				</div>
