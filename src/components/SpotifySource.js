@@ -85,7 +85,6 @@ export function getUsername(props) {
 		},
 	})
 		.then((response) => console.log(response.json()))
-		.then((res) => console.log(res.display_name));
 }
 
 export function search(props) {

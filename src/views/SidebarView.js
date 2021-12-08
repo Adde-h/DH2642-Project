@@ -1,3 +1,9 @@
+import infoView from "../views/MainView.js"
+import MainView from "../views/MainView.js"
+import MainPresenter  from "../presenters/MainPresenter.js"
+import artistChoice from "../presenters/SidebarPresenter.js"
+
+
 export default function SidebarView(props) {
 	return (
 		<div className="sidebar">
@@ -6,11 +12,12 @@ export default function SidebarView(props) {
 				<div>
 					{props.artists.map((artists) => {
 						return (
-							<a href="#" key={artists}>
+							<a href="#" key={artists} onClick={event => props.artistChoice(artists)}>
 								{artists}
 							</a>
 						);
 					})}
+					<span>{props.currentItem}</span>
 				</div>
 
 				<h2>Playlists</h2>
@@ -37,4 +44,11 @@ export default function SidebarView(props) {
 			</div>
 		</div>
 	);
+}
+
+function myFunction(e){
+	console.log("nu "+e);
+	MainView(e);
+	artistChoice(e);
+
 }

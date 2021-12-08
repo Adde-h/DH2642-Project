@@ -32,7 +32,7 @@ export default function NavbarView(props) {
 			</span>
 
 			<div className="profile">
-				<Login />
+				<Login isLoggedIn={props.isLoggedIn}/>
 			</div>
 		</div>
 	);

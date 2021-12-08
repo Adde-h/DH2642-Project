@@ -8,7 +8,8 @@ export default class SpotifyModel {
 		artists = [],
 		playlists = [],
 		albums = [],
-		observers = []
+		observers = [], 
+		currentItem = ""
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -16,6 +17,7 @@ export default class SpotifyModel {
 		this.setArtists(artists);
 		this.setPlaylists(playlists);
 		this.setAlbums(albums);
+		this.CurrentItem = currentItem;
 	}
 
 	setCode(code) {
@@ -58,6 +60,11 @@ export default class SpotifyModel {
 
 	addObserver(callback) {
 		this.observers = [...this.observers, callback];
+	}
+
+	setCurrentItem(item){
+		this.currentItem = item;
+		this.notifyObservers();
 	}
 
 	removeObserver(callback) {
