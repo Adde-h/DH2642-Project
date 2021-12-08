@@ -6,9 +6,9 @@ const ClientID = API_CLIENTID;
 const RedirectURI = API_REDIRECTURI;
 
 export default function getToken(code) {
-	console.log("ENV: ", RedirectURI);
-	console.log("ID", ClientID);
-	console.log("secret", ClientSecret);
+	//console.log("ENV: ", RedirectURI);
+  //console.log("ID", ClientID);
+	//console.log("secret", ClientSecret);
 	fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
@@ -33,8 +33,8 @@ export default function getToken(code) {
 }
 
 export function getRefreshToken(access_token) {
-	console.log("ID", ClientID);
-	console.log("secret", ClientSecret);
+	//console.log("ID", ClientID);
+	//console.log("secret", ClientSecret);
 	fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
