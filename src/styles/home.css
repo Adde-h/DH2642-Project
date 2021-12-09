@@ -183,3 +183,6 @@ div#root {
 }
 
 
+.hidden{
+	display: none;
+}

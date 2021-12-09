@@ -5,35 +5,42 @@ import NavbarPresenter from "../src/presenters/NavbarPresenter.js";
 import SidebarPresenter from "../src/presenters/SidebarPresenter.js";
 import MainPresenter from "../src/presenters/MainPresenter.js";
 import SearchPresenter from "../src/presenters/SearchPresenter.js";
+import { Routes, Route } from 'react-router-dom'
+import ResultPresenter from "../src/presenters/ResultPresenter.js"
 //import Show from "./presenters/HashPresenter.js";
 require("dotenv").config();
 
 function App(props) {
 	props.model.checkRedirect();
 	return (
-		<div className="container">
-			<div className="navbar">
-				<NavbarPresenter model={props.model} />
-			</div>
+		<Routes>
+			<Route path="/" element={
 
-			<div className="content">
-				<div className="main">
-					<SearchPresenter model={props.model} />
-				</div>
-				<SidebarPresenter model={props.model} />
-			</div>
-		</div>
+				<div className="container">
+					<div className="navbar">
+						<NavbarPresenter model={props.model} />
+					</div>
+
+					<div className="content">
+						<MainPresenter model={props.model} />
+						<SidebarPresenter model={props.model} />
+					</div>
+				</div>} />
+
+			<Route path="/details" element={
+
+				<div className="container">
+					<div className="navbar">
+						<NavbarPresenter model={props.model} />
+					</div>
+
+					<div className="content">
+						<ResultPresenter model={props.model} />
+						<SidebarPresenter model={props.model} />
+					</div>
+				</div>} />
+		</Routes>
 	);
-}
-
-//<MainPresenter model={props.model} />
-
-
-function defaultRoute() {
-	if (
-		!["#auth, #start"].find((knownRoute) => knownRoute === window.location.hash)
-	)
-		window.location.hash = "#start";
 }
 
 export default App;
