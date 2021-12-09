@@ -90,20 +90,20 @@ export function getUsername(props) {
 
 export function searchAPI(props) {
 	console.log("searchAPI", props);
-	var op = props.option;
+	var op = props.option.toLowerCase();
 	console.log("OPTION:", op);
-	
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=" + op + 
-				"&market=SE&limit=10&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	
+
+	return fetch(
+		"https://api.spotify.com/v1/search?query=" +
+			encodeURI(props.id) +
+			"&type=" +
+			op +
+			"&market=SE&limit=10&offset=0",
+		{
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		}
+	);
 }

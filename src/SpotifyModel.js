@@ -9,7 +9,7 @@ export default class SpotifyModel {
 		albums = [],
 		observers = [],
 		currentSearch = null,
-		searchType = null,
+		searchType = "track"
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -60,7 +60,10 @@ export default class SpotifyModel {
 	}
 
 	setCurrentSearch(search) {
-		if (this.currentSearch === search.query && this.searchType === search.option) {
+		if (
+			this.currentSearch === search.query &&
+			this.searchType === search.option
+		) {
 			console.log("Trigg");
 			return;
 		}
@@ -71,19 +74,22 @@ export default class SpotifyModel {
 		this.notifyObservers();
 		console.log("setCurrentSearch", search);
 		if (this.currentSearch) {
-			searchAPI({ id: this.currentSearch, option: search.option })
-				.then((response) => {
+			searchAPI({ id: this.currentSearch, option: search.option }).then(
+				(response) => {
 					response.json().then((data) => {
-						this.currentSearchDetails = data;
-						this.notifyObservers();
-						console.log("SEARCHDATA", data);
+						console.log("DATA", data);
+						if (data.error || data.length === 0) {
+							this.currentSearchError = data.error;
+							this.notifyObservers();
+							console.log("SEARCHERROR", data.error);
+						} else {
+							this.currentSearchDetails = data;
+							this.notifyObservers();
+							console.log("SEARCHDATA", data);
+						}
 					});
-				})
-				.catch((err) => {
-					this.currentSearchError = err;
-					this.notifyObservers();
-					console.log("SEARCHERROR", err);
-				});
+				}
+			);
 		}
 	}
 

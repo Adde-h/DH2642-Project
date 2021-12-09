@@ -4,17 +4,24 @@ import React from "react";
 
 export default function NavbarPresenter(props) {
 	const [searchQuery, setSearchQuery] = React.useState("");
-	const [searchType, setSearchType] = React.useState("artists");
-	
+	const [searchType, setSearchType] = React.useState("Track");
+
 	console.log("SearchQuery", searchQuery);
 	console.log("SearchType", searchType);
 
 	return (
 		<div className="navbarcontent">
-				<SearchFormView  options={["track", "artist", "album"]} 
-				setQuery = {setSearchQuery}
-				setType = {setSearchType}
-				onSearch={() => props.model.setCurrentSearch({query: searchQuery, option:searchType})}/>
+			<SearchFormView
+				options={["Track", "Artist", "Album"]}
+				setQuery={setSearchQuery}
+				setType={setSearchType}
+				onSearch={() =>
+					props.model.setCurrentSearch({
+						query: searchQuery,
+						option: searchType,
+					})
+				}
+			/>
 			<div className="profile">
 				<Login />
 			</div>

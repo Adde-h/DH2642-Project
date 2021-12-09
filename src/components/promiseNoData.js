@@ -2,7 +2,7 @@ export default function promiseNoData(promise, data, error) {
 
 	if (!promise && !data && !error) 
 	{
-		return <span>Search Result Not Found!</span>;
+		return <div></div>
 	}
 	else if (promise && !data && !error) 
 	{

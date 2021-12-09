@@ -14,14 +14,13 @@ export default function SearchFormView(props) {
 					}
 				}}
 			/>
-			
+
 			<select
 				className="searchSelect"
 				onChange={(event) => {
 					props.setType(event.target.value);
 					console.log("SELECT", event.target.value);
 				}}>
-				<option>Choose:</option>
 				{props.options.map((giveOptions) => (
 					<option value={giveOptions.value} key={giveOptions}>
 						{giveOptions}
@@ -41,46 +40,59 @@ export default function SearchFormView(props) {
 }
 
 export function SearchResultsView(props) {
-	function getData()
-	{
-		console.log("GET SEARCHTYPE", props.searchType);
-		if(props.searchType === "album")
-		{
-			console.log("ALBUM RETURN")
-
-			return props.searchResults.albums.items
-		}
-		else if (props.searchType === "track")
-		{
-			console.log("TRACK RETURN")
-
-			return props.searchResults.tracks.items
-		}
-		else
-		{
-			console.log("ARTIST RETURN")
-			return props.searchResults.artists.items
+	function getData() {
+		if (props.searchType === "Album") {
+			return props.searchResults.albums.items;
+		} else if (props.searchType === "Track") {
+			return props.searchResults.tracks.items;
+		} else {
+			return props.searchResults.artists.items;
 		}
 	}
-	console.log("SearchResultsView", props);
-	console.log("DATA",getData())
-	/**
-	 * ONLY WORKS WITH ARTISTS ATM
-	 */
-	return (
-		<div>
-			<h1>Search Results!</h1>
-			<div className="searchResults">
-				{getData().map((results) =>
-				{
-					return (
-						<span key={results.id} className="result">
-							<h2>{results.name}</h2>
-							<img src={results.images[0].url} width="100px" height="100px"/>
-						</span>
-					)
-				})}
+	console.log("DATA", getData());
+
+	if (props.searchType === "Track") {
+		return (
+			<div>
+				<h1>Search Results!</h1>
+				<div className="searchResults">
+					{getData().map((results) => {
+						return (
+							<span key={results.id} className="result">
+								<h2>{results.name}</h2>
+								<img
+									src={results.album.images[0].url}
+									width="100px"
+									height="100px"
+								/>
+							</span>
+						);
+					})}
+				</div>
 			</div>
-		</div>
-	);
+		);
+	} else {
+		return (
+			<div>
+				<h1>Search Results!</h1>
+				<div className="searchResults">
+					{getData().map((results) => {
+						var imgsrc = "";
+						if (results.images.length > 0) {
+							imgsrc = results.images[0].url;
+						} else {
+							imgsrc =
+								"https://www.stma.org/wp-content/uploads/2017/10/no-image-icon.png";
+						}
+						return (
+							<span key={results.id} className="result">
+								<h2>{results.name}</h2>
+								<img src={imgsrc} width="100px" height="100px" />
+							</span>
+						);
+					})}
+				</div>
+			</div>
+		);
+	}
 }
