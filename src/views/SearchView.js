@@ -43,16 +43,22 @@ export default function SearchFormView(props) {
 export function SearchResultsView(props) {
 	function getData()
 	{
-		if(props.searchType === "albums")
+		console.log("GET SEARCHTYPE", props.searchType);
+		if(props.searchType === "album")
 		{
+			console.log("ALBUM RETURN")
+
 			return props.searchResults.albums.items
 		}
-		else if (props.searchType === "tracks")
+		else if (props.searchType === "track")
 		{
+			console.log("TRACK RETURN")
+
 			return props.searchResults.tracks.items
 		}
 		else
 		{
+			console.log("ARTIST RETURN")
 			return props.searchResults.artists.items
 		}
 	}

@@ -11,7 +11,7 @@ export default function NavbarPresenter(props) {
 
 	return (
 		<div className="navbarcontent">
-				<SearchFormView  options={["tracks", "artists", "albums"]} 
+				<SearchFormView  options={["track", "artist", "album"]} 
 				setQuery = {setSearchQuery}
 				setType = {setSearchType}
 				onSearch={() => props.model.setCurrentSearch({query: searchQuery, option:searchType})}/>

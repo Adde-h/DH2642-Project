@@ -92,17 +92,11 @@ export function searchAPI(props) {
 	console.log("searchAPI", props);
 	var op = props.option;
 	console.log("OPTION:", op);
-
-	if(!op) 
-	{
-		console.log("NO OPTION");
-	}
 	
-	if (op === "artists") {
 		return fetch(
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
-				"&type=artist" +
+				"&type=" + op + 
 				"&market=SE&limit=10&offset=0",
 			{
 				method: "GET",
@@ -111,31 +105,5 @@ export function searchAPI(props) {
 				},
 			}
 		);
-	} else if (op === "tracks") {
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=track" +
-				"&market=SE&limit=10&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	} else if (op === "albums") {
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=album" +
-				"&market=SE&limit=10&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	}
+	
 }
