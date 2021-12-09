@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "../src/styles/index.css";
 import App from "./App";
 import SpotifyModel from "./SpotifyModel";
+import { BrowserRouter } from 'react-router-dom';
 
 const myModel = new SpotifyModel();
 ReactDOM.render(
-	<React.StrictMode>
+	<BrowserRouter>
 		<App model={myModel}/>
-	</React.StrictMode>,
+	</BrowserRouter>,
 	document.getElementById("root")
 );
