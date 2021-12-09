@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function SidebarView(props) {
 	return (
 		<div className="sidebar">
@@ -6,9 +8,9 @@ export default function SidebarView(props) {
 				<div>
 					{props.artists.map((artists) => {
 						return (
-							<a href="#" key={artists}>
+							<Link to="/details">
 								{artists}
-							</a>
+							</Link>
 						);
 					})}
 				</div>
