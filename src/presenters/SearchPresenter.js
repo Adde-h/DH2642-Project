@@ -31,7 +31,7 @@ export default function SearchPresenter(props) {
 	console.log("CURRENTSEARCHERROR", currentSearchError);
 
 	return (
-		<div>
+		<div className="main">
 			{promiseNoData(
 				currentSearch,
 				currentSearchDetails,

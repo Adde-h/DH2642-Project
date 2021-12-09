@@ -186,3 +186,9 @@ div#root {
 .hidden{
 	display: none;
 }
+
+.navSearchBtn{
+	padding: 2px;
+	height:2px;
+    width:2px;
+}

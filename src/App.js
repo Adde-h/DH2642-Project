@@ -7,6 +7,7 @@ import MainPresenter from "../src/presenters/MainPresenter.js";
 import SearchPresenter from "../src/presenters/SearchPresenter.js";
 import { Routes, Route } from 'react-router-dom'
 import ResultPresenter from "../src/presenters/ResultPresenter.js"
+import { AUTH_URL } from "../src/components/Login.js"
 //import Show from "./presenters/HashPresenter.js";
 require("dotenv").config();
 
@@ -14,7 +15,7 @@ function App(props) {
 	props.model.checkRedirect();
 	return (
 		<Routes>
-			<Route path="/" element={
+			<Route path={props.model.isLoggedIn === true ? "/callback" : "/"} element={
 
 				<div className="container">
 					<div className="navbar">
@@ -39,6 +40,20 @@ function App(props) {
 						<SidebarPresenter model={props.model} />
 					</div>
 				</div>} />
+
+			<Route path="/search" element={
+
+				<div className="container">
+					<div className="navbar">
+						<NavbarPresenter model={props.model} />
+					</div>
+
+					<div className="content">
+						<SearchPresenter model={props.model} />
+						<SidebarPresenter model={props.model} />
+					</div>
+				</div>} />
+
 		</Routes>
 	);
 }
