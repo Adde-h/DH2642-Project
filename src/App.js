@@ -4,12 +4,11 @@ import "../src/styles/home.css";
 import NavbarPresenter from "../src/presenters/NavbarPresenter.js";
 import SidebarPresenter from "../src/presenters/SidebarPresenter.js";
 import MainPresenter from "../src/presenters/MainPresenter.js";
-import Show from "./presenters/ShowPresenter";
+import SearchPresenter from "../src/presenters/SearchPresenter.js";
 import { Routes, Route } from 'react-router-dom'
 import ResultPresenter from "../src/presenters/ResultPresenter.js"
 //import Show from "./presenters/HashPresenter.js";
-require('dotenv').config()
-
+require("dotenv").config();
 
 function App(props) {
 	props.model.checkRedirect();
@@ -43,8 +42,6 @@ function App(props) {
 		</Routes>
 	);
 }
-
-
 
 export default App;
 

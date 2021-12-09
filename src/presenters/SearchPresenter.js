@@ -1,5 +1,9 @@
-function SearchPresenter(props) {
-  const [currentSearch, setCurrentSearch] = React.useState(
+import React from "react";
+import promiseNoData from "../components/promiseNoData";
+import { SearchResultsView } from "../views/SearchView";
+export default function SearchPresenter(props) {
+
+	const [currentSearch, setCurrentSearch] = React.useState(
 		props.model.currentSearch
 	);
 	const [currentSearchDetails, setCurrentSearchDetails] = React.useState(
@@ -8,32 +12,31 @@ function SearchPresenter(props) {
 	const [currentSearchError, setCurrentSearchError] = React.useState(
 		props.model.currentSearchError
 	);
-	const [searchQuery, setSearchQuery] = React.useState("");
 
-	React.useEffect(
-		function () {
-			function obs() {
-				setCurrentSearch(props.model.currentSearch);
-				setCurrentSearchDetails(props.model.currentSearchDetails);
-				setCurrentSearchError(props.model.currentSearchError);
-			}
-			props.model.addObserver(obs);
-			return function () {
-				props.model.removeObserver(obs);
-			};
-		},
-		[props.model]
-	);
-  
+	React.useEffect(() => {
+		function obs() {
+			setCurrentSearch(props.model.currentSearch);
+			setCurrentSearchDetails(props.model.currentSearchDetails);
+			setCurrentSearchError(props.model.currentSearchError);
+		}
+		props.model.addObserver(obs);
+
+		return() => {
+			props.model.removeObserver(obs);
+		};
+	}, []);
+
+	console.log("CURRENTSEARCH", currentSearch);
+	console.log("CURRENTSEARCHDETAILS", currentSearchDetails);
+	console.log("CURRENTSEARCHERROR", currentSearchError);
+
 	return (
 		<div>
 			{promiseNoData(
-				props.model.currentSearch,
-				props.model.currentSearchDetails,
-				props.model.currentSearchError
-			) || (
-				<SearchResultView searchResults={props.model.currentSearchDetails} />
-			)}
+				currentSearch,
+				currentSearchDetails,
+				currentSearchError
+			) || <SearchResultsView searchResults={currentSearchDetails} searchType={props.model.searchType} />}
 		</div>
 	);
 }
