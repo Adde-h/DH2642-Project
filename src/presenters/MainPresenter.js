@@ -1,4 +1,3 @@
-import React from "react";
 import MainView from "../views/MainView.js";
 
 export default function MainPresenter(props) {

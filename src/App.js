@@ -4,9 +4,9 @@ import "../src/styles/home.css";
 import NavbarPresenter from "../src/presenters/NavbarPresenter.js";
 import SidebarPresenter from "../src/presenters/SidebarPresenter.js";
 import MainPresenter from "../src/presenters/MainPresenter.js";
+import SearchPresenter from "../src/presenters/SearchPresenter.js";
 //import Show from "./presenters/HashPresenter.js";
-require('dotenv').config()
-
+require("dotenv").config();
 
 function App(props) {
 	props.model.checkRedirect();
@@ -17,12 +17,17 @@ function App(props) {
 			</div>
 
 			<div className="content">
-				<MainPresenter model={props.model} />
+				<div className="main">
+					<SearchPresenter model={props.model} />
+				</div>
 				<SidebarPresenter model={props.model} />
 			</div>
 		</div>
 	);
 }
+
+//<MainPresenter model={props.model} />
+
 
 function defaultRoute() {
 	if (
@@ -32,3 +37,4 @@ function defaultRoute() {
 }
 
 export default App;
+
