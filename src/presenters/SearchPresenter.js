@@ -36,7 +36,7 @@ export default function SearchPresenter(props) {
 				currentSearch,
 				currentSearchDetails,
 				currentSearchError
-			) || <SearchResultsView searchResults={currentSearchDetails} />}
+			) || <SearchResultsView searchResults={currentSearchDetails} searchType={props.model.searchType} />}
 		</div>
 	);
 }

@@ -103,7 +103,7 @@ export function searchAPI(props) {
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=artist" +
-				"&market=SE&limit=1&offset=0",
+				"&market=SE&limit=10&offset=0",
 			{
 				method: "GET",
 				headers: {
@@ -116,7 +116,7 @@ export function searchAPI(props) {
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=track" +
-				"&market=SE&limit=1&offset=0",
+				"&market=SE&limit=10&offset=0",
 			{
 				method: "GET",
 				headers: {
@@ -129,7 +129,7 @@ export function searchAPI(props) {
 			"https://api.spotify.com/v1/search?query=" +
 				encodeURI(props.id) +
 				"&type=album" +
-				"&market=SE&limit=1&offset=0",
+				"&market=SE&limit=10&offset=0",
 			{
 				method: "GET",
 				headers: {

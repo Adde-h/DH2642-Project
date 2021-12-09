@@ -41,9 +41,40 @@ export default function SearchFormView(props) {
 }
 
 export function SearchResultsView(props) {
+	function getData()
+	{
+		if(props.searchType === "albums")
+		{
+			return props.searchResults.albums.items
+		}
+		else if (props.searchType === "tracks")
+		{
+			return props.searchResults.tracks.items
+		}
+		else
+		{
+			return props.searchResults.artists.items
+		}
+	}
+	console.log("SearchResultsView", props);
+	console.log("DATA",getData())
+	/**
+	 * ONLY WORKS WITH ARTISTS ATM
+	 */
 	return (
 		<div>
 			<h1>Search Results!</h1>
+			<div className="searchResults">
+				{getData().map((results) =>
+				{
+					return (
+						<span key={results.id} className="result">
+							<h2>{results.name}</h2>
+							<img src={results.images[0].url} width="100px" height="100px"/>
+						</span>
+					)
+				})}
+			</div>
 		</div>
 	);
 }
