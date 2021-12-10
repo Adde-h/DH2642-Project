@@ -77,15 +77,14 @@ export function getSong(props) {
 		.then((res) => console.log(res.name));
 }
 
-export function getUsername(props) {
-	fetch("https://api.spotify.com/v1/me", {
+export function getUsername() {
+	return fetch("https://api.spotify.com/v1/me", {
 		method: "GET",
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
 	})
-		.then((response) => console.log(response.json()))
-		.then((res) => console.log(res.display_name));
+		.then((response) => console.log(response.json()));
 }
 
 export function searchAPI(props) {
