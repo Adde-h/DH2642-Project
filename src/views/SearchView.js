@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function SearchFormView(props) {
 	return (
@@ -34,8 +34,7 @@ export default function SearchFormView(props) {
 				onClick={() => {
 					props.onSearch();
 				}}>
-				<Link to="/search">
-				Search!</Link>
+				<Link to="/search">Search!</Link>
 			</button>
 		</span>
 	);
@@ -57,12 +56,9 @@ export function SearchResultsView(props) {
 		return (
 			<div>
 				<h1>Search Results!</h1>
-				<button
-				className="searchBtn">
-				<Link to="/callback">
-				Back to main page
-				</Link>
-			</button>
+				<button className="searchBtn">
+					<Link to="/callback">Back to main page</Link>
+				</button>
 				<div className="searchResults">
 					{getData().map((results) => {
 						return (

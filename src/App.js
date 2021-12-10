@@ -15,7 +15,8 @@ function App(props) {
 	props.model.checkRedirect();
 	return (
 		<Routes>
-			<Route path={props.model.isLoggedIn === true ? "/callback" : "/"} element={
+			<Route path={props.model.isLoggedIn === true ? "/callback" : "/"} element=
+			{
 
 				<div className="container">
 					<div className="navbar">
