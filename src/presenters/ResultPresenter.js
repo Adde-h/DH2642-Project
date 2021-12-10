@@ -1,13 +1,13 @@
 import React from "react";
 import ResultView from "../views/ResultView.js";
 
-export default function MainPresenter(props) {
+export default function ResultPresenter(props) {
 
 	/**
 	 * Main Presenter to switch between SearchResults, Artists, Playlists, Albums and Start
 	 */
 	
 	return (
-		<ResultView/>
+		<ResultView result={props.model.currentClick} />
 	);
 }

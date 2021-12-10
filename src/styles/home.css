@@ -26,6 +26,8 @@ div#root {
 	overflow: hidden;
 	width: 100%;
 	padding: 0 20px;
+	position: fixed; /* Med Fixed så försvinner inte Navbaren vid större resultat i searchView */
+	z-index: 1; /* Navbaren tar sidebars plats längst upp till vänster */
 }
 
 .navbarcontent {
@@ -86,9 +88,9 @@ div#root {
 	flex: 0 0 65%;
 	position: fixed; /* Fixed Sidebar (stay in place on scroll) */
 	overflow-y: scroll; /* Disable horizontal scroll */
-	padding-top: 20px;
-	/*background-color: blue;*/
+	padding-top: 20px; /*background-color: blue;*/
 	background-color: #1a1a1a;
+	margin-top: 50px; /* Puchar ner Sidebaren med 50px så att rubriken Artists syns */
 }
 
 /* The navigation menu links */
@@ -122,11 +124,13 @@ div#root {
 	text-align: center;
 	align-content: center;
 	justify-content: center;
+	margin-top: 60px; /* Fixar så att main viewn inte hamnar under navbaren */
 }
 
 .search{
 	width: auto;
 	align-items: center;
+	
 }
 
 .searchSelect{
@@ -175,7 +179,7 @@ div#root {
 		text-align: left;
 		width: 100%;
 		margin: 0;
-		padding: 14px;
+		padding: 14px;		
 	}
 	.navbar input[type="text"] {
 		border: 1px solid #ccc;

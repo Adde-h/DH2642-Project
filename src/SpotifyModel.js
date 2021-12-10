@@ -9,7 +9,8 @@ export default class SpotifyModel {
 		albums = [],
 		observers = [],
 		currentSearch = null,
-		searchType = "track"
+		searchType = "track",
+		currentClick = null
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -19,6 +20,7 @@ export default class SpotifyModel {
 		this.setAlbums(albums);
 		this.currentSearch = currentSearch;
 		this.searchType = searchType;
+		this.currentClick = currentClick;
 	}
 
 	setCode(code) {
@@ -91,6 +93,11 @@ export default class SpotifyModel {
 				}
 			);
 		}
+	}
+
+	setCurrentClick(clicked){
+		this.currentClick = clicked;
+		this.notifyObservers();
 	}
 
 	addObserver(callback) {
