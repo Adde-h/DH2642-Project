@@ -9,7 +9,7 @@ export default function MainView(props) {
 	return (
 		<div className="main">
 		
-        <button><Link to="/">back</Link></button>
+        <button><Link to="/callback">back</Link></button>
 		</div>
 	);
 }
