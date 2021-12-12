@@ -53,7 +53,6 @@ export default class SpotifyModel {
 	
 	fetchUserData(){
 		userData = getUserCred();
-		console.log("userData", userData);
 		this.setUserID(userData.id);
 		this.setUsername(userData.display_name);
 	}
