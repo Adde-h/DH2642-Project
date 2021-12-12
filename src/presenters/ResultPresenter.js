@@ -1,4 +1,5 @@
-import MainView from "../views/MainView.js";
+import React from "react";
+import ResultView from "../views/ResultView.js";
 
 export default function MainPresenter(props) {
 
@@ -7,6 +8,6 @@ export default function MainPresenter(props) {
 	 */
 	
 	return (
-		<MainView isLoggedIn={props.model.isLoggedIn} query={props.model.query} model = {props}/>
+		<ResultView/>
 	);
 }

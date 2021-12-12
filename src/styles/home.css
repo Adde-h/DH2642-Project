@@ -138,6 +138,20 @@ div#root {
 .searchBtn{
 	padding: 2px;
 }
+
+.searchResults{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-content: center;
+}
+
+.result{
+	padding: 10px;
+}
+
+
+
 /**
  *				Mobile CSS
  */
@@ -169,3 +183,12 @@ div#root {
 }
 
 
+.hidden{
+	display: none;
+}
+
+.navSearchBtn{
+	padding: 2px;
+	height:2px;
+    width:2px;
+}

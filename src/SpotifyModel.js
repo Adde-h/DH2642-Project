@@ -1,15 +1,19 @@
-import { getToken, searchAPI } from "../src/components/SpotifySource.js";
+import { getToken, getUserCred, searchAPI } from "../src/components/SpotifySource.js";
+
+let userData = null;
 
 export default class SpotifyModel {
 	constructor(
 		code = "",
+		userID = "",
+		username="",
 		isLoggedIn = false,
 		artists = [],
 		playlists = [],
 		albums = [],
 		observers = [],
 		currentSearch = null,
-		searchType = null,
+		searchType = "track"
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -19,29 +23,54 @@ export default class SpotifyModel {
 		this.setAlbums(albums);
 		this.currentSearch = currentSearch;
 		this.searchType = searchType;
+		this.setUserID(userID);
+		this.username = username;
 	}
 
 	setCode(code) {
 		this.code = code;
+		this.notifyObservers();
 	}
 
-	checkRedirect() {
+	async checkRedirect() {
 		console.log("checkRedirect");
 		if (
 			window.location.href.includes("callback") &&
 			this.isLoggedIn === false
-		) {
+		) 
+		{
 			console.log("Redirected");
 			this.setLoggedIn(true);
 			this.setCode(new URLSearchParams(window.location.search).get("code"));
 			console.log("code : " + this.code);
 			getToken(this.code);
+			setTimeout(() => {this.fetchUserData()} , 1000);
+			
 		}
 	}
+	
+	fetchUserData(){
+		userData = getUserCred();
+		console.log("userData", userData);
+		this.setUserID(userData.id);
+		this.setUsername(userData.display_name);
+	}
+
 
 	setLoggedIn(isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
 		console.log("setLoggedIn", isLoggedIn);
+		this.notifyObservers();
+	}
+
+	setUserID(userID) {
+		this.userID = userID;
+		this.notifyObservers();
+	}
+
+	setUsername(username) {
+		this.username = username;
+		this.notifyObservers();
 	}
 
 	setArtists(artists) {
@@ -60,7 +89,10 @@ export default class SpotifyModel {
 	}
 
 	setCurrentSearch(search) {
-		if (this.currentSearch === search.query && this.searchType === search.option) {
+		if (
+			this.currentSearch === search.query &&
+			this.searchType === search.option
+		) {
 			console.log("Trigg");
 			return;
 		}
@@ -71,19 +103,22 @@ export default class SpotifyModel {
 		this.notifyObservers();
 		console.log("setCurrentSearch", search);
 		if (this.currentSearch) {
-			searchAPI({ id: this.currentSearch, option: search.option })
-				.then((response) => {
+			searchAPI({ id: this.currentSearch, option: search.option }).then(
+				(response) => {
 					response.json().then((data) => {
-						this.currentSearchDetails = data;
-						this.notifyObservers();
-						console.log("SEARCHDATA", data);
+						console.log("DATA", data);
+						if (data.error || data.length === 0) {
+							this.currentSearchError = data.error;
+							this.notifyObservers();
+							console.log("SEARCHERROR", data.error);
+						} else {
+							this.currentSearchDetails = data;
+							this.notifyObservers();
+							console.log("SEARCHDATA", data);
+						}
 					});
-				})
-				.catch((err) => {
-					this.currentSearchError = err;
-					this.notifyObservers();
-					console.log("SEARCHERROR", err);
-				});
+				}
+			);
 		}
 	}
 

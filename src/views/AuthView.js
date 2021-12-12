@@ -1,3 +1,0 @@
-/**
- * Page for Auth View
- */

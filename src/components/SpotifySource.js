@@ -1,14 +1,12 @@
 import { API_CLIENTID, API_CLIENTSECRET, API_REDIRECTURI } from "./SpotifyAPI";
 
 var access_token = null;
+var refresh_token = null;
 const ClientSecret = API_CLIENTSECRET;
 const ClientID = API_CLIENTID;
 const RedirectURI = API_REDIRECTURI;
 
 export function getToken(code) {
-	//console.log("ENV: ", RedirectURI);
-	//console.log("ID", ClientID);
-	//console.log("secret", ClientSecret);
 	fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
@@ -17,24 +15,22 @@ export function getToken(code) {
 				"Basic " +
 				new Buffer.from(ClientID + ":" + ClientSecret).toString("base64"),
 		},
-		form: {
-			code: code,
-			redirect_uri: API_REDIRECTURI,
-			grant_type: "authorization_code",
-		},
-		body: "grant_type=client_credentials",
+		body:
+			"grant_type=authorization_code&code=" +
+			code +
+			"&redirect_uri=" +
+			RedirectURI,
 	})
 		.then((e) => e.json())
 		.then((r) => {
-			console.log(r);
+			console.log("GOT TOKEN", r);
 			access_token = r.access_token;
-			console.log("access_token", access_token);
+			refresh_token = r.refresh_token;
 		});
 }
 
+/* Format might be incorrect check GetToken() */
 export function getRefreshToken(access_token) {
-	//console.log("ID", ClientID);
-	//console.log("secret", ClientSecret);
 	fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
@@ -44,10 +40,8 @@ export function getRefreshToken(access_token) {
 				new Buffer.from(ClientID + ":" + ClientSecret).toString("base64"),
 		},
 		form: {
-			//code: code,
-			//redirect_uri: API_REDIRECTURI,
 			grant_type: "refresh-token",
-			refresh_token: access_token,
+			refresh_token: refresh_token,
 		},
 		body: "grant_type=client_credentials",
 	})
@@ -77,65 +71,33 @@ export function getSong(props) {
 		.then((res) => console.log(res.name));
 }
 
-export function getUsername(props) {
-	fetch("https://api.spotify.com/v1/me", {
+export function getUserCred() {
+	return fetch("https://api.spotify.com/v1/me/", {
 		method: "GET",
 		headers: {
 			Authorization: `Bearer ${access_token}`,
 		},
-	})
-		.then((response) => console.log(response.json()))
-		.then((res) => console.log(res.display_name));
+	}).then((response) =>
+		response.json().then((res) => console.log("UserCredentials", res))
+	);
 }
 
 export function searchAPI(props) {
 	console.log("searchAPI", props);
-	var op = props.option;
+	var op = props.option.toLowerCase();
 	console.log("OPTION:", op);
 
-	if(!op) 
-	{
-		console.log("NO OPTION");
-	}
-	
-	if (op === "artists") {
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=artist" +
-				"&market=SE&limit=1&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	} else if (op === "tracks") {
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=track" +
-				"&market=SE&limit=1&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	} else if (op === "albums") {
-		return fetch(
-			"https://api.spotify.com/v1/search?query=" +
-				encodeURI(props.id) +
-				"&type=album" +
-				"&market=SE&limit=1&offset=0",
-			{
-				method: "GET",
-				headers: {
-					Authorization: `Bearer ${access_token}`,
-				},
-			}
-		);
-	}
+	return fetch(
+		"https://api.spotify.com/v1/search?query=" +
+			encodeURI(props.id) +
+			"&type=" +
+			op +
+			"&market=SE&limit=10&offset=0",
+		{
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		}
+	);
 }
