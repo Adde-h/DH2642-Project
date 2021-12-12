@@ -150,11 +150,9 @@ div#root {
 	align-content: center;
 }
 
-.result{
+.resultTile {
 	padding: 10px;
 }
-
-
 
 /**
  *				Mobile CSS
@@ -191,7 +189,7 @@ div#root {
 	display: none;
 }
 
-.navSearchBtn{
+.navSearchBtn {
 	padding: 2px;
 	height:2px;
     width:2px;

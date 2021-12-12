@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export default function SearchFormView(props) {
 	return (
 		<span className="search">
@@ -33,11 +34,7 @@ export default function SearchFormView(props) {
 				onClick={() => {
 					props.onSearch();
 				}}>
-
-			
-				
 				Search!
-			
 			</Link>
 		</span>
 	);
@@ -69,12 +66,13 @@ export function SearchResultsView(props) {
 				<div className="searchResults">
 					{getData().map((results) => {
 						return (
-							<span key={results.id} className="result">
+							<span className="resultTile" key={results.id} onClick={e => props.addPlaylist(results.name)} >
 								<h2>{results.name}</h2>
 								<img
 									src={results.album.images[0].url}
 									width="100px"
 									height="100px"
+									alt=""
 								/>
 							</span>
 						);
@@ -102,7 +100,8 @@ export function SearchResultsView(props) {
 								"https://www.stma.org/wp-content/uploads/2017/10/no-image-icon.png";
 						}
 						return (
-							<span key={results.id} className="result">
+							<span key={results.id} className="result" onClick={props.searchType === "Artist" ? e => props.addArtist(results.name)  
+																											: e => props.addAlbum(results.name)}>
 								<h2>{results.name}</h2>
 								<img src={imgsrc} width="100px" height="100px" />
 							</span>
