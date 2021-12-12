@@ -7,6 +7,6 @@ export default function MainPresenter(props) {
 	 */
 	
 	return (
-		<MainView isLoggedIn={props.model.isLoggedIn} query={props.model.query} model = {props}/>
+		<MainView loginStatus={props.model.isLoggedIn} query={props.model.query} username={props.model.username}/>
 	);
 }

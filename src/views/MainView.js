@@ -5,11 +5,11 @@ export default function MainView(props) {
 	return (
 		<div className = "main">
 		
-			<h2>Welcome {props.isLoggedIn ? "Username" : "Guest"}</h2>
-			<span className={props.isLoggedIn ? "hidden" : ""}>
+			<h2>Welcome {props.username}</h2>
+			<span className={props.loginStatus ? "hidden" : ""}>
 				Please sign up or log in to get started
 			</span>
-			<span className={props.isLoggedIn ? "" : "hidden"}>
+			<span className={props.loginStatus ? "" : "hidden"}>
 				(Input text)
 			</span>
 

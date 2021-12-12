@@ -19,9 +19,9 @@ export default class SpotifyModel {
 		this.observers = observers;
 		this.code = code;
 		this.isLoggedIn = isLoggedIn;
-		this.setArtists(artists);
-		this.setPlaylists(playlists);
-		this.setAlbums(albums);
+		this.artists = artists;
+		this.playlists = playlists;
+		this.albums = albums;
 		this.currentSearch = currentSearch;
 		this.searchType = searchType;
 		this.currentClick = currentClick;
@@ -75,19 +75,25 @@ export default class SpotifyModel {
 		this.notifyObservers();
 	}
 
-	setArtists(artists) {
-		this.artists = [...artists];
-		this.notifyObservers();
+	setArtists(artist) {
+		if (!this.artists.includes(artist)) {
+			this.artists = [...this.artists, artist];
+			this.notifyObservers();
+		}
 	}
 
-	setAlbums(albums) {
-		this.albums = [...albums];
-		this.notifyObservers();
+	setAlbums(album) {
+		if(!this.albums.includes(album)){
+			this.albums = [...this.albums, album];
+			this.notifyObservers();
+		}	
 	}
 
-	setPlaylists(playlists) {
-		this.playlists = [...playlists];
-		this.notifyObservers();
+	setPlaylists(playlist) {
+		if(!this.playlists.includes(playlist)){
+			this.playlists = [...this.playlist, playlist];
+			this.notifyObservers();
+		}	
 	}
 
 	setCurrentSearch(search) {

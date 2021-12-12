@@ -36,7 +36,11 @@ export default function SearchPresenter(props) {
 				currentSearch,
 				currentSearchDetails,
 				currentSearchError
-			) || <SearchResultsView searchResults={currentSearchDetails} searchType={props.model.searchType} />}
+			) || <SearchResultsView searchResults={currentSearchDetails} 
+									searchType={props.model.searchType} 
+									addArtist={item => props.model.setArtists(item)}
+									addPlaylist={item => props.model.setPlaylists(item)}
+									addAlbum={item => props.model.setAlbums(item)}/>}
 		</div>
 	);
 }

@@ -18,8 +18,8 @@ export default function Login(props) {
 	console.log("här" + props.loginStatus)
 	return (
 		<div>
-			<a className="btn btn-success btn-lg" href={AUTH_URL} onClick={() => getUsername()}>
-				{props.loginStatus ? "Username" : "Log in with Spotify"}
+			<a className="btn btn-success btn-lg" href={AUTH_URL} >
+				{props.loginStatus ? "Username" : "Log in with Spotify"}</a>
 		</div>
 	);
 }
