@@ -39,7 +39,6 @@ export default function SearchFormView(props) {
 				Search!
 			
 			</Link>
-			<button onClick={mybtn()}>Search test</button>
 		</span>
 	);
 }
