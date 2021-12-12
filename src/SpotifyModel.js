@@ -29,6 +29,7 @@ export default class SpotifyModel {
 
 	setCode(code) {
 		this.code = code;
+		this.notifyObservers();
 	}
 
 	async checkRedirect() {
@@ -43,14 +44,16 @@ export default class SpotifyModel {
 			this.setCode(new URLSearchParams(window.location.search).get("code"));
 			console.log("code : " + this.code);
 			getToken(this.code);
-			this.fetchUserData();
+			setTimeout(() => {this.fetchUserData()} , 1000);
+			
 		}
 	}
 	
-	/* NEED TO MAKE SYNCHRONE (WAIT AFTER getToken() FINISHES AND THEN TRIGGER) */
 	fetchUserData(){
 		userData = getUserCred();
 		console.log("userData", userData);
+		this.setUserID(userData.id);
+		this.setUsername(userData.display_name);
 	}
 
 
@@ -62,6 +65,11 @@ export default class SpotifyModel {
 
 	setUserID(userID) {
 		this.userID = userID;
+		this.notifyObservers();
+	}
+
+	setUsername(username) {
+		this.username = username;
 		this.notifyObservers();
 	}
 
