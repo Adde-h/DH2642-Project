@@ -1,8 +1,12 @@
-import { getToken, searchAPI } from "../src/components/SpotifySource.js";
+import { getToken, getUserCred, searchAPI } from "../src/components/SpotifySource.js";
+
+let userData = null;
 
 export default class SpotifyModel {
 	constructor(
 		code = "",
+		userID = "",
+		username="",
 		isLoggedIn = false,
 		artists = [],
 		playlists = [],
@@ -21,29 +25,54 @@ export default class SpotifyModel {
 		this.currentSearch = currentSearch;
 		this.searchType = searchType;
 		this.currentClick = currentClick;
+		this.setUserID(userID);
+		this.username = username;
 	}
 
 	setCode(code) {
 		this.code = code;
+		this.notifyObservers();
 	}
 
-	checkRedirect() {
+	async checkRedirect() {
 		console.log("checkRedirect");
 		if (
 			window.location.href.includes("callback") &&
 			this.isLoggedIn === false
-		) {
+		) 
+		{
 			console.log("Redirected");
 			this.setLoggedIn(true);
 			this.setCode(new URLSearchParams(window.location.search).get("code"));
 			console.log("code : " + this.code);
 			getToken(this.code);
+			setTimeout(() => {this.fetchUserData()} , 1000);
+			
 		}
 	}
+	
+	fetchUserData(){
+		userData = getUserCred();
+		console.log("userData", userData);
+		this.setUserID(userData.id);
+		this.setUsername(userData.display_name);
+	}
+
 
 	setLoggedIn(isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
 		console.log("setLoggedIn", isLoggedIn);
+		this.notifyObservers();
+	}
+
+	setUserID(userID) {
+		this.userID = userID;
+		this.notifyObservers();
+	}
+
+	setUsername(username) {
+		this.username = username;
+		this.notifyObservers();
 	}
 
 	setArtists(artists) {

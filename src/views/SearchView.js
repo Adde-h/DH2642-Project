@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function SearchFormView(props) {
 	return (
@@ -33,6 +33,7 @@ export default function SearchFormView(props) {
 				onClick={() => {
 					props.onSearch();
 				}}>
+
 			
 				
 				Search!
@@ -43,9 +44,6 @@ export default function SearchFormView(props) {
 	);
 }
 
-export function mybtn(){
-	
-}
 
 export function SearchResultsView(props) {
 	function getData() {

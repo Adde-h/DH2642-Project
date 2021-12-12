@@ -1,9 +1,17 @@
 import React from "react";
-import { getUsername } from "./SpotifySource";
 import { API_CLIENTID, API_REDIRECTURI } from "./SpotifyAPI";
+var scope = 'user-read-private user-read-email';
+var querystring = require('querystring');
+
 
 export const AUTH_URL =
-	"https://accounts.spotify.com/authorize?client_id="+ API_CLIENTID +"&response_type=code&redirect_uri=" + API_REDIRECTURI + "&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
+	"https://accounts.spotify.com/authorize?" +	querystring.stringify({
+		response_type: 'code',
+		client_id: API_CLIENTID,
+		scope: scope,
+		redirect_uri: API_REDIRECTURI,
+	})
+
 
 export default function Login(props) {
 	console.log("försöker logga in")
@@ -12,8 +20,6 @@ export default function Login(props) {
 		<div>
 			<a className="btn btn-success btn-lg" href={AUTH_URL} onClick={() => getUsername()}>
 				{props.loginStatus ? "Username" : "Log in with Spotify"}
-			</a>
-			
 		</div>
 	);
 }
