@@ -29,16 +29,21 @@ export default function SearchFormView(props) {
 				))}
 			</select>
 
-			<button
-				className="searchBtn"
+			<Link to="/search" type="button" className="searchBtn" role="button"
 				onClick={() => {
 					props.onSearch();
 				}}>
-				<Link to="/search">Search!</Link>
-			</button>
+
+			
+				
+				Search!
+			
+			</Link>
+			<button onClick={mybtn()}>Search test</button>
 		</span>
 	);
 }
+
 
 export function SearchResultsView(props) {
 	function getData() {
@@ -55,10 +60,13 @@ export function SearchResultsView(props) {
 	if (props.searchType === "Track") {
 		return (
 			<div>
-				<h1>Search Results!</h1>
-				<button className="searchBtn">
-					<Link to="/callback">Back to main page</Link>
-				</button>
+				<h1>Search Results 2!</h1>
+				<button
+				className="searchBtn">
+				<Link to="/callback">
+				Back to main page
+				</Link>
+			</button>
 				<div className="searchResults">
 					{getData().map((results) => {
 						return (
@@ -78,7 +86,13 @@ export function SearchResultsView(props) {
 	} else {
 		return (
 			<div>
-				<h1>Search Results!</h1>
+				<h1>Search Results Artists!</h1>
+				<button
+				className="searchBtn">
+				<Link to="/callback">
+				Back to main page
+				</Link>
+			</button>
 				<div className="searchResults">
 					{getData().map((results) => {
 						var imgsrc = "";

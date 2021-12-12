@@ -4,12 +4,13 @@ import promiseNoData from "../components/promiseNoData.js";
 import { Link } from 'react-router-dom';
 
 
-export default function MainView(props) {
-	console.log('ResultView', props);
+export default function ResultView(props) {
+	//console.log('ResultView', props);
 	return (
-		<div className="main">
+		<div className="main">		
+        <button><Link to="/callback">Back to main page</Link></button>
+		<h2>{props.result}</h2>
 		
-        <button><Link to="/callback">back</Link></button>
 		</div>
 	);
 }

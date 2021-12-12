@@ -23,7 +23,7 @@ export default function NavbarPresenter(props) {
 				}
 			/>
 			<div className="profile">
-				<Login />
+				<Login loginStatus={props.model.isLoggedIn} />
 			</div>
 		</div>
 	);

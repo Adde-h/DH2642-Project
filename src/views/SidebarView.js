@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-
+import { setSearch } from "../presenters/SidebarPresenter"
+ 
 export default function SidebarView(props) {
 	return (
 		<div className="sidebar">
@@ -8,7 +9,7 @@ export default function SidebarView(props) {
 				<div>
 					{props.artists.map((artists) => {
 						return (
-							<Link to="/details">
+							<Link to="/details" key={artists} onClick={() => props.setSearch(artists)}>
 								{artists}
 							</Link>
 						);
