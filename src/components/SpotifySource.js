@@ -7,7 +7,7 @@ const ClientID = API_CLIENTID;
 const RedirectURI = API_REDIRECTURI;
 
 export function getToken(code) {
-	fetch("https://accounts.spotify.com/api/token", {
+	return fetch("https://accounts.spotify.com/api/token", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/x-www-form-urlencoded",
@@ -78,7 +78,8 @@ export function getUserCred() {
 			Authorization: `Bearer ${access_token}`,
 		},
 	}).then((response) =>
-		response.json().then((res) => console.log("UserCredentials", res))
+		response.json()
+		//.then((res) => console.log("UserCredentials", res))
 	);
 }
 

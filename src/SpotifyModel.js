@@ -1,12 +1,16 @@
-import { getToken, getUserCred, searchAPI } from "../src/components/SpotifySource.js";
+import {
+	getToken,
+	getUserCred,
+	searchAPI,
+} from "../src/components/SpotifySource.js";
 
-let userData = null;
+//let userData = null;
 
 export default class SpotifyModel {
 	constructor(
 		code = "",
 		userID = "",
-		username="",
+		username = "",
 		isLoggedIn = false,
 		artists = [],
 		playlists = [],
@@ -25,8 +29,7 @@ export default class SpotifyModel {
 		this.currentSearch = currentSearch;
 		this.searchType = searchType;
 		this.currentClick = currentClick;
-		this.setUserID(userID);
-		this.username = username;
+		this.setUser(userID, username);
 	}
 
 	setCode(code) {
@@ -39,24 +42,24 @@ export default class SpotifyModel {
 		if (
 			window.location.href.includes("callback") &&
 			this.isLoggedIn === false
-		) 
-		{
+		) {
 			console.log("Redirected");
 			this.setLoggedIn(true);
 			this.setCode(new URLSearchParams(window.location.search).get("code"));
 			console.log("code : " + this.code);
-			getToken(this.code);
-			setTimeout(() => {this.fetchUserData()} , 1000);
-			
+			getToken(this.code).then(() => this.fetchUserData());
+			this.notifyObservers();
 		}
 	}
-	
-	fetchUserData(){
-		userData = getUserCred();
-		this.setUserID(userData.id);
-		this.setUsername(userData.display_name);
-	}
 
+	fetchUserData() {
+		getUserCred()
+			.then((userData) => this.setUser(userData.id, userData.display_name))
+			.then(() => {
+				console.log("userData", this.userID, this.username);
+				this.notifyObservers();
+			});
+	}
 
 	setLoggedIn(isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
@@ -64,14 +67,10 @@ export default class SpotifyModel {
 		this.notifyObservers();
 	}
 
-	setUserID(userID) {
+	setUser(userID, username) {
 		this.userID = userID;
-		this.notifyObservers();
-	}
-
-	setUsername(username) {
 		this.username = username;
-		this.notifyObservers();
+		//this.notifyObservers();
 	}
 
 	setArtists(artist) {
@@ -82,17 +81,17 @@ export default class SpotifyModel {
 	}
 
 	setAlbums(album) {
-		if(!this.albums.includes(album)){
+		if (!this.albums.includes(album)) {
 			this.albums = [...this.albums, album];
 			this.notifyObservers();
-		}	
+		}
 	}
 
 	setPlaylists(playlist) {
-		if(!this.playlists.includes(playlist)){
+		if (!this.playlists.includes(playlist)) {
 			this.playlists = [...this.playlists, playlist];
 			this.notifyObservers();
-		}	
+		}
 	}
 
 	setCurrentSearch(search) {
@@ -129,7 +128,7 @@ export default class SpotifyModel {
 		}
 	}
 
-	setCurrentClick(clicked){
+	setCurrentClick(clicked) {
 		this.currentClick = clicked;
 		this.notifyObservers();
 	}
