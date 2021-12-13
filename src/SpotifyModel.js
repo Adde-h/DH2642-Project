@@ -91,7 +91,7 @@ export default class SpotifyModel {
 
 	setPlaylists(playlist) {
 		if(!this.playlists.includes(playlist)){
-			this.playlists = [...this.playlist, playlist];
+			this.playlists = [...this.playlists, playlist];
 			this.notifyObservers();
 		}	
 	}
