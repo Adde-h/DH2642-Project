@@ -16,8 +16,8 @@ export const AUTH_URL =
 export default function Login(props) {
 	return (
 		<div>
-			<a className="btn btn-success btn-lg" href={AUTH_URL}>
-				{props.loginStatus ? "Username" : "Log in with Spotify"} </a>
+			<a className="btn btn-success btn-lg" href={AUTH_URL} >
+				{props.loginStatus ? "Username" : "Log in with Spotify"}</a>
 		</div>
 	);
 }

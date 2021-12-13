@@ -5,7 +5,7 @@ export default function SidebarView(props) {
 	return (
 		<div className="sidebar">
 			<div className="sidecontent">
-				<h2>Artists</h2>
+				<h2>My Artists</h2>
 				<div>
 					{props.artists.map((artists) => {
 						return (
@@ -16,7 +16,7 @@ export default function SidebarView(props) {
 					})}
 				</div>
 
-				<h2>Playlists</h2>
+				<h2>My Playlists</h2>
 				<div>
 					{props.playlists.map((playlists) => {
 						return (
@@ -27,7 +27,7 @@ export default function SidebarView(props) {
 					})}
 				</div>
 
-				<h2>Albums</h2>
+				<h2>My Albums</h2>
 				<div>
 					{props.albums.map((albums) => {
 						return (
