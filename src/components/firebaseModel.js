@@ -1,4 +1,4 @@
-import { db } from "./firebaseConfig.js";
+import { database } from "./firebaseConfig.js";
 import { collection, addDoc } from "firebase/firestore";
 
 export default function persistModel(model) 
@@ -12,7 +12,7 @@ export default function persistModel(model)
 		if (loadingFromFirebase) return;
 		try {
       loadingFromFirebase = true;
-			const docRef = await addDoc(collection(db, "users"), {
+			const docRef = await addDoc(collection(database, "users"), {
 				name: model.username,
 				id: model.userID,
 			});
