@@ -21,6 +21,7 @@ export default function NavbarPresenter(props) {
 						option: searchType,
 					})
 				}
+				loginStatus={props.model.isLoggedIn}
 			/>
 			<div className="profile">
 				<Login loginStatus={props.model.isLoggedIn} />

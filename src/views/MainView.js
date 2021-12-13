@@ -11,6 +11,9 @@ export default function MainView(props) {
 			</span>
 			<span className={props.loginStatus ? "" : "hidden"}>
 				(Input text)
+				<div>Här</div>
+				<h4>testar här igen</h4>
+				<span>Ladda bild</span>
 			</span>
 
 		</div>
