@@ -5,9 +5,18 @@ import React from "react";
 export default function NavbarPresenter(props) {
 	const [searchQuery, setSearchQuery] = React.useState("");
 	const [searchType, setSearchType] = React.useState("Track");
+	const [username, setUsername] = React.useState("");
+	
+	React.useEffect(() => {
+		function obs() {
+			setUsername(props.model.artists);
+		}
+		props.model.addObserver(obs);
 
-	console.log("SearchQuery", searchQuery);
-	console.log("SearchType", searchType);
+		return() => {
+			props.model.removeObserver(obs);
+		};
+	}, []);
 
 	return (
 		<div className="navbarcontent">
@@ -24,7 +33,7 @@ export default function NavbarPresenter(props) {
 				loginStatus={props.model.isLoggedIn}
 			/>
 			<div className="profile">
-				<Login loginStatus={props.model.isLoggedIn} />
+				<Login loginStatus={props.model.isLoggedIn} username={props.model.username} />
 			</div>
 		</div>
 	);

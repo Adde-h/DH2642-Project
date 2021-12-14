@@ -7,7 +7,6 @@ import MainPresenter from "../src/presenters/MainPresenter.js";
 import SearchPresenter from "../src/presenters/SearchPresenter.js";
 import { Routes, Route } from 'react-router-dom'
 import ResultPresenter from "../src/presenters/ResultPresenter.js"
-import { AUTH_URL } from "../src/components/Login.js"
 //import Show from "./presenters/HashPresenter.js";
 require("dotenv").config();
 
