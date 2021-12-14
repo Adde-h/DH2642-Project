@@ -38,15 +38,12 @@ export default class SpotifyModel {
 	}
 
 	async checkRedirect() {
-		console.log("checkRedirect");
 		if (
 			window.location.href.includes("callback") &&
 			this.isLoggedIn === false
 		) {
-			console.log("Redirected");
 			this.setLoggedIn(true);
 			this.setCode(new URLSearchParams(window.location.search).get("code"));
-			console.log("code : " + this.code);
 			getToken(this.code).then(() => this.fetchUserData());
 			this.notifyObservers();
 		}
@@ -63,7 +60,6 @@ export default class SpotifyModel {
 
 	setLoggedIn(isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
-		console.log("setLoggedIn", isLoggedIn);
 		this.notifyObservers();
 	}
 
@@ -99,7 +95,6 @@ export default class SpotifyModel {
 			this.currentSearch === search.query &&
 			this.searchType === search.option
 		) {
-			console.log("Trigg");
 			return;
 		}
 		this.searchType = search.option;
@@ -107,20 +102,16 @@ export default class SpotifyModel {
 		this.currentSearchDetails = null;
 		this.currentSearchError = null;
 		this.notifyObservers();
-		console.log("setCurrentSearch", search);
 		if (this.currentSearch) {
 			searchAPI({ id: this.currentSearch, option: search.option }).then(
 				(response) => {
 					response.json().then((data) => {
-						console.log("DATA", data);
 						if (data.error || data.length === 0) {
 							this.currentSearchError = data.error;
 							this.notifyObservers();
-							console.log("SEARCHERROR", data.error);
 						} else {
 							this.currentSearchDetails = data;
 							this.notifyObservers();
-							console.log("SEARCHDATA", data);
 						}
 					});
 				}

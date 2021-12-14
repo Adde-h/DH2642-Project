@@ -14,7 +14,6 @@ const AUTH_URL =
 
 
 export default function Login(props) {
-	console.log("ändrar username i navbar", props.username);
 	if(!props.loginStatus){
 		return (
 			<div>

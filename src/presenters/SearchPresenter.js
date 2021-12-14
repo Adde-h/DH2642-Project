@@ -26,10 +26,6 @@ export default function SearchPresenter(props) {
 		};
 	}, []);
 
-	console.log("CURRENTSEARCH", currentSearch);
-	console.log("CURRENTSEARCHDETAILS", currentSearchDetails);
-	console.log("CURRENTSEARCHERROR", currentSearchError);
-
 	return (
 		<div className="main">
 			{promiseNoData(

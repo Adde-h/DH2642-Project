@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function MainView(props) {
-	console.log('MainView', props);	
 	return (
 		<div className = "main">
 		

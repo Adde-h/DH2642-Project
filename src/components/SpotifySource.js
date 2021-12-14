@@ -84,9 +84,7 @@ export function getUserCred() {
 }
 
 export function searchAPI(props) {
-	console.log("searchAPI", props);
 	var op = props.option.toLowerCase();
-	console.log("OPTION:", op);
 
 	return fetch(
 		"https://api.spotify.com/v1/search?query=" +

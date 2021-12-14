@@ -18,10 +18,6 @@ export default function NavbarPresenter(props) {
 		};
 	}, []);
 
-
-	console.log("SearchQuery", searchQuery);
-	console.log("SearchType", searchType);
-
 	return (
 		<div className="navbarcontent">
 			<SearchFormView

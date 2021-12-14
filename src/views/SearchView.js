@@ -21,7 +21,6 @@ export default function SearchFormView(props) {
 				className="searchSelect"
 				onChange={(event) => {
 					props.setType(event.target.value);
-					console.log("SELECT", event.target.value);
 				}}>
 				{props.options.map((giveOptions) => (
 					<option value={giveOptions.value} key={giveOptions}>
@@ -51,7 +50,6 @@ export function SearchResultsView(props) {
 			return props.searchResults.artists.items;
 		}
 	}
-	console.log("DATA", getData());
 
 	if (props.searchType === "Track") {
 		return (
