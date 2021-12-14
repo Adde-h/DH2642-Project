@@ -8,6 +8,7 @@ export default function ResultPresenter(props) {
 	 */
 	
 	return (
-		<ResultView result={props.model.currentClick} />
+		<ResultView result={props.model.currentClick}
+					addArtist={item => props.model.setArtists(item)}/>
 	);
 }

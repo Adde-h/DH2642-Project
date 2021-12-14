@@ -200,3 +200,18 @@ div#root {
 	margin-top: 40%;
 	margin-left: 10px;
 }
+
+.btnInResView {
+	margin-top: 20px;
+	margin-left: 20px;
+	background-color: #04AA6D;
+    border: none;
+    color: white;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 12px;
+}
