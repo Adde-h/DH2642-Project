@@ -10,8 +10,8 @@ export default function SidebarView(props) {
 					<div>
 						{props.artists.map((artists) => {
 							return (
-								<Link to="/details" key={artists} onClick={() => props.setSearch(artists)}>
-									{artists}
+								<Link to="/details" key={artists.id} onClick={() => props.setSearch(artists)}>
+									{artists.name}
 								</Link>
 							);
 						})}
@@ -21,9 +21,9 @@ export default function SidebarView(props) {
 					<div>
 						{props.playlists.map((playlists) => {
 							return (
-								<a href="#" key={playlists}>
-									{playlists}
-								</a>
+								<Link to="/details" key={playlists.id} onClick={() => props.setSearch(playlists)}>
+									{playlists.name}
+								</Link>
 							);
 						})}
 					</div>
@@ -32,9 +32,9 @@ export default function SidebarView(props) {
 					<div>
 						{props.albums.map((albums) => {
 							return (
-								<a href="#" key={albums}>
-									{albums}
-								</a>
+								<Link to="/details" key={albums.id} onClick={() => props.setSearch(albums)}>
+									{albums.name}
+								</Link>
 							);
 						})}
 					</div>

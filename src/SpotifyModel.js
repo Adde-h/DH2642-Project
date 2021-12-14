@@ -18,7 +18,9 @@ export default class SpotifyModel {
 		observers = [],
 		currentSearch = null,
 		searchType = "track",
-		currentClick = null
+		currentClick = null,
+		firstTime = true,
+		addingToDatabase = false,
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -30,6 +32,8 @@ export default class SpotifyModel {
 		this.searchType = searchType;
 		this.currentClick = currentClick;
 		this.setUser(userID, username);
+		this.firstTime = firstTime;
+		this.addingToDatabase = addingToDatabase;
 	}
 
 	setCode(code) {
@@ -72,13 +76,26 @@ export default class SpotifyModel {
 	setArtists(artist) {
 		if (!this.artists.includes(artist)) {
 			this.artists = [...this.artists, artist];
+			this.addingToDatabase = true;
 			this.notifyObservers();
 		}
 	}
-
+/*
+	removeArtists(artist) {
+		this.artists.forEach((artist) => {
+			if (artist.id === dishData.id) {
+				this.dishes = [...this.dishes].filter(
+					(event) => event.id !== dishData.id
+				);
+				this.notifyObservers();
+			}
+		});
+	}
+*/
 	setAlbums(album) {
 		if (!this.albums.includes(album)) {
 			this.albums = [...this.albums, album];
+			this.addingToDatabase = true;
 			this.notifyObservers();
 		}
 	}
@@ -86,6 +103,7 @@ export default class SpotifyModel {
 	setPlaylists(playlist) {
 		if (!this.playlists.includes(playlist)) {
 			this.playlists = [...this.playlists, playlist];
+			this.addingToDatabase = true;
 			this.notifyObservers();
 		}
 	}

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 export default function SearchFormView(props) {
 	return (
 		<span className={props.loginStatus ? "search" : "hidden"}>
@@ -29,7 +28,11 @@ export default function SearchFormView(props) {
 				))}
 			</select>
 
-			<Link to="/search" type="button" className="searchBtn" role="button"
+			<Link
+				to="/search"
+				type="button"
+				className="searchBtn"
+				role="button"
 				onClick={() => {
 					props.onSearch();
 				}}>
@@ -38,7 +41,6 @@ export default function SearchFormView(props) {
 		</span>
 	);
 }
-
 
 export function SearchResultsView(props) {
 	function getData() {
@@ -55,16 +57,16 @@ export function SearchResultsView(props) {
 		return (
 			<div>
 				<h1>Search Results 2!</h1>
-				<button
-				className="searchBtn">
-				<Link to="/callback">
-				Back to main page
-				</Link>
-			</button>
+				<button className="searchBtn">
+					<Link to="/callback">Back to main page</Link>
+				</button>
 				<div className="searchResults">
 					{getData().map((results) => {
 						return (
-							<span className="resultTile" key={results.id} onClick={e => props.addPlaylist(results.name)} >
+							<span
+								className="resultTile"
+								key={results.id}
+								onClick={() => props.addPlaylist(results)}>
 								<h2>{results.name}</h2>
 								<img
 									src={results.album.images[0].url}
@@ -82,12 +84,9 @@ export function SearchResultsView(props) {
 		return (
 			<div>
 				<h1>Search Results Artists!</h1>
-				<button
-				className="searchBtn">
-				<Link to="/callback">
-				Back to main page
-				</Link>
-			</button>
+				<button className="searchBtn">
+					<Link to="/callback">Back to main page</Link>
+				</button>
 				<div className="searchResults">
 					{getData().map((results) => {
 						var imgsrc = "";
@@ -98,8 +97,14 @@ export function SearchResultsView(props) {
 								"https://www.stma.org/wp-content/uploads/2017/10/no-image-icon.png";
 						}
 						return (
-							<span key={results.id} className="result" onClick={props.searchType === "Artist" ? e => props.addArtist(results.name)  
-																											: e => props.addAlbum(results.name)}>
+							<span
+								key={results.id}
+								className="result"
+								onClick={
+									props.searchType === "Artist"
+										? (e) => props.addArtist(results)
+										: (e) => props.addAlbum(results)
+								}>
 								<h2>{results.name}</h2>
 								<img src={imgsrc} width="100px" height="100px" />
 							</span>

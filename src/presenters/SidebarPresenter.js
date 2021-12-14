@@ -1,6 +1,5 @@
 import React from "react";
 import SidebarView from "../views/SidebarView.js";
-import setSearch from ".."
 
 export default function SidebarPresenter(props) {
 	const [artists, setArtist] = React.useState(
