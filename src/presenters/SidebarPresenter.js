@@ -26,7 +26,7 @@ export default function SidebarPresenter(props) {
 		return() => {
 			props.model.removeObserver(obs);
 		};
-	}, []);
+	}, [props.model]);
 
 	return (
 		<SidebarView
@@ -36,6 +36,7 @@ export default function SidebarPresenter(props) {
 			artistId={["3TVXtAsR1Inumwj472S9r4", "3WrFJ7ztbogyGnTHbHJFl2", 
 						"5K4W6rqBFWDnAN6FQUkS6x", "3tNPDodRNuLdezJnTsYOqy"]}
 			setSearch={(item) => props.model.setCurrentClick(item)}
+			loginStatus={props.model.isLoggedIn}
 		/>
 	);
 }
