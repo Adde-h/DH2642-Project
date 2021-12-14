@@ -6,33 +6,33 @@ export default function persistModel(model) {
 	let writingToDatabase = false; 
 	let readingFromDatabase = false;
 
-	model.addObserver(async function () {
-		console.log("model changed, RUNNING OBSERVER");
-
+	model.addObserver(async function () 
+	{
 		if (writingToDatabase || !model.userID || !model.username) return;
 		const document = doc(database, "users", model.userID);
 		const getUser = await getDoc(document);
 
 		/* Fetch user data from database */
 		if (
-			getUser.exists &&
+			getUser.exists() &&
 			model.playlists.length === 0 &&
 			model.artists.length === 0 &&
 			model.albums.length === 0
 		) {
+			console.log("User exists, model empty, fetching data");
 			readingFromDatabase = true;
-			console.log("User data:", getUser.data());
 			model.playlists = getUser.data().playlists;
 			model.artists = getUser.data().artists;
 			model.albums = getUser.data().albums;
 			model.notifyObservers();
 			readingFromDatabase = false;
 		} else if (
-			getUser.exists &&
+			getUser.exists() &&
 			(model.playlists.length > 0 ||
 				model.artists.length > 0 ||
 				model.albums.length > 0)
 		) {
+			console.log("User exists, writing to database");
 			writingToDatabase = true;
 			await setDoc(document, {
 				playlists: model.playlists,
@@ -46,15 +46,13 @@ export default function persistModel(model) {
 			console.log("No such User!");
 			/* Add User to database */
 			try {
-
 				writingToDatabase = true;
-				
 				await setDoc(document, {
 					name: model.username,
 					id: model.userID,
-					playlists: model.playlists,
-					artists: model.artists,
-					albums: model.albums,
+					playlists:[],
+					artists:[],
+					albums:[],
 				});
 
 				writingToDatabase = false;

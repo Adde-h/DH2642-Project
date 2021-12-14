@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 
 export default function SearchFormView(props) {
-	console.log("SEARCHVIEWFORM", props);
 	return (
 		<span className={props.loginStatus ? "search" : "hidden"}>
 			<input
