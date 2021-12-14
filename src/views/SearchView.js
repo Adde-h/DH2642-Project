@@ -102,14 +102,14 @@ export function SearchResultsView(props) {
 
 						if (props.searchType === "Album") {
 							return (
-								<span key={results.id} className="result" onClick={() => props.addAlbum(results.name)}>
+								<span key={results.id} className="result" onClick={() => props.addAlbum(results)}>
 									<h2>{results.name}</h2>
 									<img src={imgsrc} width="100px" height="100px" />
 								</span>
 							);
 						} else {
 							return(
-								<Link to="/details" key={results.name} onClick={() => props.setSearch(results.name)}>
+								<Link to="/details" key={results.name} onClick={() => props.setSearch(results)}>
 									<span key={results.id} className="result">
 										<h2>{results.name}</h2>
 										<img src={imgsrc} width="100px" height="100px" />
