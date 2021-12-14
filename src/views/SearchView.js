@@ -54,7 +54,7 @@ export function SearchResultsView(props) {
 	if (props.searchType === "Track") {
 		return (
 			<div>
-				<h1>Search Results 2!</h1>
+				<h1>Search Results!</h1>
 				<button
 				className="searchBtn">
 				<Link to="/callback">
@@ -97,13 +97,24 @@ export function SearchResultsView(props) {
 							imgsrc =
 								"https://www.stma.org/wp-content/uploads/2017/10/no-image-icon.png";
 						}
-						return (
-							<span key={results.id} className="result" onClick={props.searchType === "Artist" ? e => props.addArtist(results.name)  
-																											: e => props.addAlbum(results.name)}>
-								<h2>{results.name}</h2>
-								<img src={imgsrc} width="100px" height="100px" />
-							</span>
-						);
+
+						if (props.searchType === "Album") {
+							return (
+								<span key={results.id} className="result" onClick={() => props.addAlbum(results.name)}>
+									<h2>{results.name}</h2>
+									<img src={imgsrc} width="100px" height="100px" />
+								</span>
+							);
+						} else {
+							return(
+								<Link to="/details" key={results.name} onClick={() => props.setSearch(results.name)}>
+									<span key={results.id} className="result">
+										<h2>{results.name}</h2>
+										<img src={imgsrc} width="100px" height="100px" />
+									</span>
+								</Link>
+							);
+						}
 					})}
 				</div>
 			</div>

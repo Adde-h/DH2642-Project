@@ -36,7 +36,8 @@ export default function SearchPresenter(props) {
 									searchType={props.model.searchType} 
 									addArtist={item => props.model.setArtists(item)}
 									addPlaylist={item => props.model.setPlaylists(item)}
-									addAlbum={item => props.model.setAlbums(item)}/>}
+									addAlbum={item => props.model.setAlbums(item)}
+									setSearch={(item) => props.model.setCurrentClick(item)}/>}
 		</div>
 	);
 }
