@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { setSearch } from "../presenters/SidebarPresenter"
  
 export default function SidebarView(props) {
 	return (

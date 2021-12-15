@@ -35,7 +35,7 @@ export default function SearchPresenter(props) {
 			) || <SearchResultsView searchResults={currentSearchDetails} 
 									searchType={props.model.searchType} 
 									addArtist={item => props.model.setArtists(item)}
-									addPlaylist={item => props.model.setPlaylists(item)}
+									addPlaylist={item => props.model.setTracks(item)}
 									addAlbum={item => props.model.setAlbums(item)}
 									setSearch={(item) => props.model.setCurrentClick(item)}/>}
 		</div>

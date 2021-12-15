@@ -32,8 +32,6 @@ export default function SidebarPresenter(props) {
 			artists={props.model.artists}
 			playlists={props.model.playlists}
 			albums={props.model.albums}
-			artistId={["3TVXtAsR1Inumwj472S9r4", "3WrFJ7ztbogyGnTHbHJFl2", 
-						"5K4W6rqBFWDnAN6FQUkS6x", "3tNPDodRNuLdezJnTsYOqy"]}
 			setSearch={(item) => props.model.setCurrentClick(item)}
 			loginStatus={props.model.isLoggedIn}
 		/>
