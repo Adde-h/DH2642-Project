@@ -66,18 +66,12 @@ export function SearchResultsView(props) {
 				<div className="searchResults">
 					{getData().map((results) => {
 						return (
-							<span
-								className="resultTile"
-								key={results.id}
-								onClick={() => props.addPlaylist(results)}>
-								<h2>{results.name}</h2>
-								<img
-									src={results.album.images[0].url}
-									width="100px"
-									height="100px"
-									alt=""
-								/>
-							</span>
+							<Link to="/details" key={results.name} onClick={() => props.setSearch(results)}>
+									<span key={results.id} className="result">
+										<h2>{results.name}</h2>
+										<img src={results.album.images[0].url} width="100px" height="100px" />
+									</span>
+								</Link>
 						);
 					})}
 				</div>
@@ -102,10 +96,12 @@ export function SearchResultsView(props) {
 
 						if (props.searchType === "Album") {
 							return (
-								<span key={results.id} className="result" onClick={() => props.addAlbum(results)}>
-									<h2>{results.name}</h2>
-									<img src={imgsrc} width="100px" height="100px" />
-								</span>
+								<Link to="/details" key={results.name} onClick={() => props.setSearch(results)}>
+									<span key={results.id} className="result">
+										<h2>{results.name}</h2>
+										<img src={imgsrc} width="100px" height="100px" />
+									</span>
+								</Link>
 							);
 						} else {
 							return(

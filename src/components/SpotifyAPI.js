@@ -1,4 +1,4 @@
-export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI_HEROKU;
-//export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI;
+//export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI_HEROKU;
+export const API_REDIRECTURI = process.env.REACT_APP_API_REDIRECTURI;
 export const API_CLIENTSECRET = process.env.REACT_APP_API_CLIENTSECRET;
 export const API_CLIENTID = process.env.REACT_APP_API_CLIENTID;

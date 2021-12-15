@@ -4,8 +4,6 @@ import {
 	searchAPI,
 } from "../src/components/SpotifySource.js";
 
-//let userData = null;
-
 export default class SpotifyModel {
 	constructor(
 		code = "",
@@ -20,7 +18,7 @@ export default class SpotifyModel {
 		searchType = "track",
 		currentClick = null,
 		firstTime = true,
-		addingToDatabase = false,
+		addingToDatabase = false
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -62,6 +60,26 @@ export default class SpotifyModel {
 			});
 	}
 
+	add(item) {
+		if (item.type === "track") {
+			this.setTracks(item);
+		} else if (item.type === "album") {
+			this.setAlbums(item);
+		} else if (item.type === "artist") {
+			this.setArtists(item);
+		}
+	}
+
+	remove(item) {
+		if (item.type === "track") {
+			this.removeTracks(item);
+		} else if (item.type === "album") {
+			this.removeAlbums(item);
+		} else if (item.type === "artist") {
+			this.removeArtists(item);
+		}
+	}
+
 	setLoggedIn(isLoggedIn) {
 		this.isLoggedIn = isLoggedIn;
 		this.notifyObservers();
@@ -70,7 +88,6 @@ export default class SpotifyModel {
 	setUser(userID, username) {
 		this.userID = userID;
 		this.username = username;
-		//this.notifyObservers();
 	}
 
 	setArtists(artist) {
@@ -80,18 +97,19 @@ export default class SpotifyModel {
 			this.notifyObservers();
 		}
 	}
-/*
+
 	removeArtists(artist) {
-		this.artists.forEach((artist) => {
-			if (artist.id === dishData.id) {
-				this.dishes = [...this.dishes].filter(
-					(event) => event.id !== dishData.id
+		this.artists.forEach((artistData) => {
+			if (artist.id === artistData.id) {
+				this.artists = [...this.artists].filter(
+					(event) => event.id !== artistData.id
 				);
+				this.addingToDatabase = true;
 				this.notifyObservers();
 			}
 		});
 	}
-*/
+
 	setAlbums(album) {
 		if (!this.albums.includes(album)) {
 			this.albums = [...this.albums, album];
@@ -100,12 +118,36 @@ export default class SpotifyModel {
 		}
 	}
 
-	setPlaylists(playlist) {
+	removeAlbums(album) {
+		this.albums.forEach((albumData) => {
+			if (album.id === albumData.id) {
+				this.albums = [...this.albums].filter(
+					(event) => event.id !== albumData.id
+				);
+				this.addingToDatabase = true;
+				this.notifyObservers();
+			}
+		});
+	}
+
+	setTracks(playlist) {
 		if (!this.playlists.includes(playlist)) {
 			this.playlists = [...this.playlists, playlist];
 			this.addingToDatabase = true;
 			this.notifyObservers();
 		}
+	}
+
+	removeTracks(playlist) {
+		this.playlists.forEach((playlistData) => {
+			if (playlist.id === playlistData.id) {
+				this.playlists = [...this.playlists].filter(
+					(event) => event.id !== playlistData.id
+				);
+				this.addingToDatabase = true;
+				this.notifyObservers();
+			}
+		});
 	}
 
 	setCurrentSearch(search) {
@@ -139,6 +181,7 @@ export default class SpotifyModel {
 
 	setCurrentClick(clicked) {
 		this.currentClick = clicked;
+		console.log(clicked);
 		this.notifyObservers();
 	}
 

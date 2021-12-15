@@ -6,7 +6,7 @@ export default function persistModel(model) {
 	let readingFromDatabase = false;
 
 	model.addObserver(async function () {
-		if (writingToDatabase || !model.userID || !model.username) return;
+		if (writingToDatabase || readingFromDatabase || !model.userID || !model.username) return;
 		const document = doc(database, "users", model.userID);
 		const getUser = await getDoc(document);
 
