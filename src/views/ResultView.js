@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function ResultView(props) {
 	const type = props.result.type;
-
+	console.log("moreINfo", props.moreInfo);
 	if (type === "artist") {
 		return (
 			<div className="main">
@@ -33,6 +33,13 @@ export default function ResultView(props) {
 						{props.result.genres[0]} genre. {props.result.name} has received a
 						spotify ranking of {props.result.popularity} based on the artist's
 						popularity.
+					</div>
+
+					<div>
+						<h2>Albums</h2>
+						{props.moreInfo.tracks[0].name}
+
+
 					</div>
 				</div>
 			</div>
@@ -77,8 +84,7 @@ export default function ResultView(props) {
 				</div>
 			</div>
 		);
-	} 
-	else if (type === "album") {
+	} else if (type === "album") {
 		return (
 			<div className="main">
 				<button className="btnInResView">
@@ -103,16 +109,18 @@ export default function ResultView(props) {
 						alt="album img"
 					/>
 					<div className="resultTextD">
-						{props.result.name} is an album by {props.result.artists[0].name} and was released in{" "}
-						{props.result.release_date}. The album has {props.result.total_tracks} tracks and can be found on{" "}
-						<a href={props.result.external_urls.spotify} target={"_blank"}> Spotify </a>
-
+						{props.result.name} is an album by {props.result.artists[0].name}{" "}
+						and was released in {props.result.release_date}. The album has{" "}
+						{props.result.total_tracks} tracks and can be found on{" "}
+						<a href={props.result.external_urls.spotify} target={"_blank"}>
+							{" "}
+							Spotify{" "}
+						</a>
 					</div>
 				</div>
 			</div>
 		);
-	}
-	else {
+	} else {
 		return (
 			<div className="main">
 				<button className="btnInResView">

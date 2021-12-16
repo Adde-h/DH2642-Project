@@ -21,7 +21,8 @@ export default class SpotifyModel {
 		searchType = "track",
 		currentClick = null,
 		firstTime = true,
-		addingToDatabase = false
+		addingToDatabase = false,
+		moreInfo = []
 	) {
 		this.observers = observers;
 		this.code = code;
@@ -35,6 +36,7 @@ export default class SpotifyModel {
 		this.setUser(userID, username);
 		this.firstTime = firstTime;
 		this.addingToDatabase = addingToDatabase;
+		this.moreInfo = moreInfo;
 	}
 
 	setCode(code) {
@@ -183,32 +185,35 @@ export default class SpotifyModel {
 	}
 
 	setCurrentClick(clicked) {
-		this.getMoreInfo({type:clicked.type, id:clicked.id});
 		this.currentClick = clicked;
 		console.log(clicked);
-		this.notifyObservers();
+
+		this.getMoreInfo({ type: clicked.type, id: clicked.id }).then(
+			(response) => {
+				response.json().then((info) => {
+					this.moreInfo = info;
+					this.notifyObservers();
+					console.log("MoreINFO", info);
+				});
+			}
+		);
 	}
 
-	getMoreInfo(props)
-	{
-		if(props.type === "artist")
-		{
-			getTopTracks(props.id).then((response) => {
+	getMoreInfo(props) {
+		if (props.type === "artist") {
+			return getTopTracks(props.id);
+		}
+
+		if (props.type === "album") {
+			return getAlbumTracks(props.id).then((response) => {
 				response.json().then((data) => {
-					console.log("top tracks", data);
+					this.moreInfo = data;
+					console.log("Songs in Album", this.moreInfo);
 				});
 			});
 		}
 
-		if(props.type === "album")
-		{
-			getAlbumTracks(props.id).then((response) => {
-				response.json().then((data) => {
-					console.log("Songs in Album", data);
-				});
-			});
-		}
-
+		this.notifyObservers();
 	}
 
 	addObserver(callback) {
