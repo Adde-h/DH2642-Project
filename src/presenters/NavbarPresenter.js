@@ -31,6 +31,7 @@ export default function NavbarPresenter(props) {
 					})
 				}
 				loginStatus={props.model.isLoggedIn}
+				add = {(item) => props.model.add(item)}
 			/>
 			<div className="profile">
 				<Login loginStatus={props.model.isLoggedIn} username={props.model.username} />

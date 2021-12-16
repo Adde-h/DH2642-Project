@@ -91,7 +91,7 @@ export function searchAPI(props) {
 			encodeURI(props.id) +
 			"&type=" +
 			op +
-			"&market=US&limit=10&offset=0",
+			"&market=US&limit=20&offset=0",
 		{
 			method: "GET",
 			headers: {

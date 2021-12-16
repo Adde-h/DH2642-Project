@@ -11,7 +11,7 @@ body {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
-	background-color: orange;
+	background-color: rgb(54, 54, 54);
 	margin: 0;
 	color: white;
 	overflow-x: hidden; /* Disable horizontal scroll */
@@ -120,7 +120,6 @@ div#root {
 	background-color: rgb(54, 54, 54);
 	padding: 0 20px;
 	margin-left: 200px;
-	border: 2px solid black;
 	text-align: center;
 	align-content: center;
 	justify-content: center;
@@ -204,7 +203,7 @@ div#root {
 .btnInResView {
 	margin-top: 20px;
 	margin-left: 20px;
-	background-color: #04AA6D;
+	background-color: rgb(15, 117, 143);
     border: none;
     color: white;
     padding: 5px;
@@ -232,7 +231,26 @@ div#root {
 	margin-bottom: 20px;*/
 	background-color: #1a1a1a;
   	width: 300px;
-  	border: 15px solid #04AA6D;
+  	border: 15px solid rgb(15, 117, 143);
   	padding: 50px;
   	margin: 20px;
+}
+
+.cards {
+	margin: 20px;
+	
+}
+
+.cardCont {
+	background-color: #1a1a1a;
+	color: white;
+}
+
+a:link {
+	color: white;
+	text-decoration: none;
+}
+a:visited {
+	color: white;
+	text-decoration: none;
 }
