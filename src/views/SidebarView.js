@@ -16,7 +16,7 @@ export default function SidebarView(props) {
 						})}
 					</div>
 
-					<h2>My Playlists</h2>
+					<h2>My Songs</h2>
 					<div>
 						{props.playlists.map((playlists) => {
 							return (

@@ -1,7 +1,10 @@
+import { get } from "spotify-web-api-node/src/http-manager";
 import {
 	getToken,
 	getUserCred,
 	searchAPI,
+	getTopTracks,
+	getAlbumTracks,
 } from "../src/components/SpotifySource.js";
 
 export default class SpotifyModel {
@@ -180,9 +183,32 @@ export default class SpotifyModel {
 	}
 
 	setCurrentClick(clicked) {
+		this.getMoreInfo({type:clicked.type, id:clicked.id});
 		this.currentClick = clicked;
 		console.log(clicked);
 		this.notifyObservers();
+	}
+
+	getMoreInfo(props)
+	{
+		if(props.type === "artist")
+		{
+			getTopTracks(props.id).then((response) => {
+				response.json().then((data) => {
+					console.log("top tracks", data);
+				});
+			});
+		}
+
+		if(props.type === "album")
+		{
+			getAlbumTracks(props.id).then((response) => {
+				response.json().then((data) => {
+					console.log("Songs in Album", data);
+				});
+			});
+		}
+
 	}
 
 	addObserver(callback) {

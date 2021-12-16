@@ -53,7 +53,6 @@ function App(props) {
 						<SidebarPresenter model={props.model} />
 					</div>
 				</div>} />
-
 		</Routes>
 	);
 }

@@ -100,3 +100,27 @@ export function searchAPI(props) {
 		}
 	);
 }
+
+export function getTopTracks(artistID) {
+	return fetch(
+		"https://api.spotify.com/v1/artists/" + artistID +"/top-tracks?market=US",
+		{
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		}
+	);
+}
+
+export function getAlbumTracks(albumID) {
+	return fetch(
+		"https://api.spotify.com/v1/albums/" + albumID + "/tracks?limit=3&offset=0",
+		{
+			method: "GET",
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		}
+	);
+}
