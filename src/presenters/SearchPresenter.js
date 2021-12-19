@@ -2,7 +2,6 @@ import React from "react";
 import promiseNoData from "../components/promiseNoData";
 import { SearchResultsView } from "../views/SearchView";
 export default function SearchPresenter(props) {
-
 	const [currentSearch, setCurrentSearch] = React.useState(
 		props.model.currentSearch
 	);
@@ -21,10 +20,10 @@ export default function SearchPresenter(props) {
 		}
 		props.model.addObserver(obs);
 
-		return() => {
+		return () => {
 			props.model.removeObserver(obs);
 		};
-	}, []);
+	});
 
 	return (
 		<div className="main">
@@ -32,13 +31,16 @@ export default function SearchPresenter(props) {
 				currentSearch,
 				currentSearchDetails,
 				currentSearchError
-			) || <SearchResultsView searchResults={currentSearchDetails} 
-									searchType={props.model.searchType} 
-									addArtist={item => props.model.setArtists(item)}
-									addPlaylist={item => props.model.setTracks(item)}
-									addAlbum={item => props.model.setAlbums(item)}
-									setSearch={(item) => props.model.setCurrentClick(item)}/>}
+			) || (
+				<SearchResultsView
+					searchResults={currentSearchDetails}
+					searchType={props.model.searchType}
+					addArtist={(item) => props.model.setArtists(item)}
+					addPlaylist={(item) => props.model.setTracks(item)}
+					addAlbum={(item) => props.model.setAlbums(item)}
+					setSearch={(item) => props.model.setCurrentClick(item)}
+				/>
+			)}
 		</div>
 	);
 }
-

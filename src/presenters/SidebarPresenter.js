@@ -2,17 +2,11 @@ import React from "react";
 import SidebarView from "../views/SidebarView.js";
 
 export default function SidebarPresenter(props) {
-	const [artists, setArtist] = React.useState(
-		props.model.artists
-	);
+	const [artists, setArtist] = React.useState(props.model.artists);
 
-	const [playlist, setPlaylist] = React.useState(
-		props.model.playlists
-	);
-	
-	const [album, setAlbum] = React.useState(
-		props.model.albums
-	);
+	const [playlist, setPlaylist] = React.useState(props.model.playlists);
+
+	const [album, setAlbum] = React.useState(props.model.albums);
 
 	React.useEffect(() => {
 		function obs() {
@@ -22,16 +16,16 @@ export default function SidebarPresenter(props) {
 		}
 		props.model.addObserver(obs);
 
-		return() => {
+		return () => {
 			props.model.removeObserver(obs);
 		};
 	}, [props.model]);
 
 	return (
 		<SidebarView
-			artists={props.model.artists}
-			playlists={props.model.playlists}
-			albums={props.model.albums}
+			artists={artists}
+			playlists={playlist}
+			albums={album}
 			setSearch={(item) => props.model.setCurrentClick(item)}
 			loginStatus={props.model.isLoggedIn}
 		/>

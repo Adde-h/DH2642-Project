@@ -6,7 +6,7 @@ export default function promiseNoData(promise, data, error) {
 	}
 	else if (promise && !data && !error) 
 	{
-		return <img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif"></img>;
+		return <img src="https://flevix.com/wp-content/uploads/2019/07/Curve-Loading.gif" alt="Loading..."></img>;
 	} 
 	else if (error) 
 	{
