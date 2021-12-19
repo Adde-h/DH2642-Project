@@ -4,13 +4,56 @@ import promiseNoData from "../components/promiseNoData.js";
 
 
 export default function MainView(props) {
-	console.log('MainView', props);
+	
 	return (
-		<div className ="main">
-		
-			<h2>Welcome {props.isLoggedIn ? "Username" : "Guest"}</h2>
-			<span>Please sign up or log in to get started</span>
+		<div className="main">
+			
+
+
+			<div>
+				<h1> Webbify</h1>
+			</div>
+
+			<div>
+				<span> Insert logo</span>
+			</div>
+			<div className="lefttt">
+				Welcome (Guest) to <b>Webbify</b> <br />
+				A web application created to search artists,
+				songs and albums to get useful information!<br /><br />
+
+				This is Dana Ismail, Daniel Mebrahtu Redi,
+				Adeel Hussain and Mehir Seyum Wolde
+				<b> DH2642 HT20-1 Interaktionsprogrammering och dynamiska webben</b> Project.
+				<br /><br /><br />
+			</div>
+
+			<div>
+				<b>To get started using Webbify</b>, <br />
+				we would like you to log in with your Spotify account.
+				If you do not have a Spotify account, you can easily create a free account with your email
+				https://www.spotify.com/se/signup (href till denna länk)
+				<br />
+				Once logged in, we would recommend you take the time to freely explore
+				the Webbify by trying  to search for your favorite artist, on of their song or maybe even their latest album.
+				<br /><br />
+			</div>
+			<div>
+				<h3>Features</h3> 
+				<ul>
+					<li><b>Feature 1</b></li>
+					<li><b>Feature 2</b></li>
+					<li><b>Feature 3</b></li>					
+				</ul>
+				For more information, please take a look at our <b>READ ME</b> file. (Länka till filen)
+
+			</div>
+			
+
 
 		</div>
+
+
+
 	);
 }
