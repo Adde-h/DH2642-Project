@@ -25,7 +25,7 @@ export default function Login(props) {
 	else{
 		return (
 			<div>
-				<a className="btn btn-success btn-lg">
+				<a className="btn btn-success btn-lg" href="/#">
 					{props.loginStatus ? props.username : "Log in with Spotify"}</a>
 			</div>
 		);

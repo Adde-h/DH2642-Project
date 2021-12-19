@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 export default function SearchFormView(props) {
@@ -73,7 +71,7 @@ export function SearchResultsView(props) {
             return (
               <Link
                 to="/details"
-                key={results.name}
+                key={results.id}
                 onClick={() => props.setSearch(results)}
               >
                 <span key={results.id} className="result">
@@ -118,7 +116,7 @@ export function SearchResultsView(props) {
               return (
                 <Link
                   to="/details"
-                  key={results.name}
+                  key={results.id}
                   onClick={() => props.setSearch(results)}
                 >
                   <span key={results.id} className="result">
@@ -142,7 +140,7 @@ export function SearchResultsView(props) {
               return (
                 <Link
                   to="/details"
-                  key={results.name}
+                  key={results.id}
                   onClick={() => props.setSearch(results)}
                 >
                   <span key={results.id} className="result">

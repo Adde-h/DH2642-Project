@@ -55,7 +55,7 @@ export default class SpotifyModel {
 		getUserCred()
 			.then((userData) => this.setUser(userData.id, userData.display_name))
 			.then(() => {
-				console.log("userData", this.userID, this.username);
+				//console.log("userData", this.userID, this.username);
 				this.notifyObservers();
 			});
 	}
@@ -181,7 +181,7 @@ export default class SpotifyModel {
 
 	setCurrentClick(clicked) {
 		this.currentClick = clicked;
-		console.log(clicked);
+		//console.log(clicked);
 		this.notifyObservers();
 	}
 
