@@ -208,6 +208,8 @@ div#root {
 	border-radius: 50%;
 	margin: 20px;
 	margin-left: 40px;
+	width: 65%;
+	height: auto;
 }
 
 .resultTextD {
@@ -218,11 +220,13 @@ div#root {
   	border: 15px solid rgb(15, 117, 143);
   	padding: 50px;
   	margin: 20px;
+	font-size: 150%;
+	font-family: 'Courier New', Courier, monospace;
+	font-style: italic;
 }
 
 .cards {
 	margin: 20px;
-	
 }
 
 .cardCont {
@@ -267,4 +271,8 @@ a:visited {
 	.navbar input[type="text"] {
 		border: 1px solid #ccc;
 	}
+}
+
+.artistNameTitle {
+	font-size: 350%;
 }

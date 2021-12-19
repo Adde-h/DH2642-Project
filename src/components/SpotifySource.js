@@ -28,6 +28,7 @@ export function getToken(code) {
 			//refresh_token = r.refresh_token;
 		});
 }
+
 /* Not used in this version on Webbify
 export function getSong(props) {
 	fetch("https://api.spotify.com/v1/tracks/" + props, {
@@ -40,6 +41,7 @@ export function getSong(props) {
 		.then((res) => console.log(res.name));
 }
 */
+
 export function getUserCred() {
 	return fetch("https://api.spotify.com/v1/me/", {
 		method: "GET",

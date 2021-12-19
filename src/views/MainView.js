@@ -33,7 +33,8 @@ export default function MainView(props) {
 								<b>To get started using Webbify</b>, <br />
 								We would like you to log in with your Spotify account. If you do
 								not have a Spotify account, you can easily create a free account
-								with your email <a href="https://www.spotify.com/se/signup"> here </a>
+								with your email{" "}
+								<a href="https://www.spotify.com/se/signup"> here </a>
 								<br />
 								Once logged in, we would recommend you take the time to freely
 								explore the Webbify by trying to search for your favorite

@@ -22,7 +22,7 @@ export default function ResultView(props) {
         >
           Remove {type} from your list
         </button>
-        <h1>{props.result.name}</h1>
+        <h1 className="artistNameTitle">{props.result.name}</h1>
         <div className="resultDivD">
           <img
             className="resultImageD"
@@ -31,7 +31,7 @@ export default function ResultView(props) {
           />
           <div className="resultTextD">
             This is {props.result.name}. An artist who offers his{" "}
-            {props.result.followers.total} unique followers a taste in the{" "}
+            {props.result.followers.total.toLocaleString()} unique followers a taste in the{" "}
             {props.result.genres[0]} genre. {props.result.name} has received a
             spotify ranking of {props.result.popularity} based on the artist's
             popularity.
