@@ -4,11 +4,11 @@ A web application created to search artists, songs and albums to get useful info
 
 # About Webbify
 
-This is a project completed during winter 2021 in the course DH2642 Interaction Programming and the Dynamic web by
-4 students at KTH. The aim of this project was to create a web application containing information about your favoirte artists, songs and album to get to know them better.
+This is a project completed during winter 2021 in the course DH2642 Interaction Programming and the Dynamic Web by
+4 students at KTH. The aim of this project was to create a web application containing information about your favourite artists, songs and album to get to know them better.
 
 This application can be used to search your favourite songs and artists through the use of SpotifyAPI.
-With the use of SpotifyAPI you can access millions of artists and songs from around the world. By adding which ever song or track to your user, you can access them whenever you want since our app allows for you to store them and delete them at will.
+With the use of SpotifyAPI you can access millions of artists and songs from around the world. By adding whichever song or track to your user, you can access them whenever you want since our app allows you to store them and delete them at will.
 
 ## Features (More to be implemented)
 
@@ -50,7 +50,7 @@ npm install     # To install all dependencies
 
 ### 5. Run the application:
 
-#### Follow these stepes:
+#### Follow these steps:
 
     1. Setup a database
     2. Setup the .env file with correct keys
@@ -92,7 +92,7 @@ SidebarPresenter.js: Used to render Sidebar containing Artists, Playlists and Al
 
 ResultPresenter.js: Used to render the information regarding the selected artist, track or album
 
-SearchPresenter.js: Used during search, maintains the different state regarding aspects of the search function such as type, errors that occur and the details of what has been found
+SearchPresenter.js: Used during the search, maintains the different state regarding aspects of the search function such as type, errors that occur and the details of what has been found
 
 ### **/src/styles**
 
@@ -106,7 +106,7 @@ images: Containing our logo
 
 ### **/src/views**
 
-MainView.js: Contains what is shown for our main screen in the middle of the application
+MainView.js: This contains what is shown for our main screen in the middle of the application
 
 ResultView.js: The view to show the result after pressing an artist/album/song
 
@@ -118,7 +118,7 @@ SidebarView.js: Contains the whole sidebar information and data
 
 App.js: Contains everything needed for the application to function and render
 
-SpotifyModel.js: Our model for this application containing functions to set and save data, to be used more in the future
+SpotifyModel.js: Our model for this application contains functions to set and save data, to be used more in the future
 
 index.js: Where everything renders to the webpage
 
